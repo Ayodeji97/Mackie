@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ImageView
+        android:id="@+id/trending_recycler_view_img"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/lagbaja_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/trending_list_item_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceBody2"
+        android:layout_marginTop="@dimen/margin_18"
+        android:layout_marginStart="@dimen/margin_18"
+        app:layout_constraintStart_toEndOf="@+id/trending_recycler_view_img"
+        app:layout_constraintTop_toTopOf="@+id/trending_recycler_view_img"
+        tools:text="Mixrza" />
+
+    <TextView
+        android:id="@+id/trending_list_item_subtitle_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?textAppearanceBody2"
+        android:layout_marginTop="@dimen/margin_18"
+        android:layout_marginStart="@dimen/margin_18"
+        app:layout_constraintStart_toEndOf="@+id/trending_recycler_view_img"
+        app:layout_constraintTop_toBottomOf="@+id/trending_list_item_title_tv"
+        tools:text="Davido ft Olamide" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
