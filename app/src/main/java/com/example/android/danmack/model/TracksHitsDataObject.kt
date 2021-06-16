@@ -1,11 +1,7 @@
 package com.example.android.danmack.model
 
-data class TopTrack (
-    val tracks : List<TopTrackData>
-) {
 
-    data class TopTrackData (
-
+    data class TracksHitsDataObject (
         val layout : String,
         val type : String,
         val key : String,
@@ -114,6 +110,3 @@ data class TopTrack (
             val adamid : String
         )
     }
-
-
-}
