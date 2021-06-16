@@ -1,7 +1,17 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: "androidx.navigation.safeargs.kotlin"
+//apply plugin: 'com.android.application'
+//apply plugin: 'kotlin-android'
+//apply plugin: 'kotlin-kapt'
+//apply plugin: "androidx.navigation.safeargs.kotlin"
+
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'dagger.hilt.android.plugin'
+}
+
+
 
 
 android {
@@ -16,6 +26,7 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+       // testInstrumentationRunner "com.mylearning.devplacement.HiltTestRunner"
     }
 
     buildTypes {
@@ -54,7 +65,7 @@ dependencies {
     //Navigation dependencies
     //noinspection LifecycleAnnotationProcessorWithJava8
     kapt "androidx.lifecycle:lifecycle-compiler:$archLifecycleVersion"
-//    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+  //  implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
 //    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$archLifecycleVersion"
@@ -68,6 +79,7 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:2.9.0"
     implementation "com.squareup.retrofit2:converter-moshi:2.9.0"
     implementation 'com.squareup.retrofit2:converter-scalars:2.9.0'
+    implementation "com.squareup.retrofit2:converter-gson:$retrofitVersion"
 
 
     // Coroutine
@@ -82,4 +94,21 @@ dependencies {
     kapt "androidx.room:room-compiler:2.3.0"
 
 
+    // Dagger Hilt
+    implementation "com.google.dagger:hilt-android:$hiltVersion"
+    kapt "com.google.dagger:hilt-android-compiler:$hiltVersion"
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltAndroidXVersion"
+    kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion"
+
+    implementation "androidx.hilt:hilt-lifecycle-viewmodel:$hiltViewmodels"
+    kapt "androidx.hilt:hilt-compiler:$hiltViewmodels"
+
+    //Timber logging library dependency
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+}
+
+
+kapt {
+    correctErrorTypes true
 }
