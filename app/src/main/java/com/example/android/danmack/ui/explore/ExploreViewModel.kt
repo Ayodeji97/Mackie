@@ -1,9 +1,9 @@
 package com.example.android.danmack.ui.explore
 
-import android.util.Log
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
+import com.example.android.danmack.model.SongData
+import com.example.android.danmack.model.Track
+
 import com.example.android.danmack.repository.SongRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -15,19 +15,26 @@ import javax.inject.Inject
 class ExploreViewModel @Inject constructor
     (private val songRepository: SongRepository) : ViewModel() {
 
+    private val _tracksList = MutableLiveData<SongData>()
+    val tracksList : LiveData<SongData>
+        get() = _tracksList
 
-//init {
-//   getAllSongs()
-//}
+
+init {
+   getAllSongs()
+}
 
 
-    private fun getAllSongs () {
+    fun getAllSongs () {
         viewModelScope.launch {
             try {
+                _tracksList.value = songRepository.getAllSongs()
                 val see = songRepository.getAllSongs()
-                print(see)
+                Timber.i("SUCCESS")
+                Timber.i("$see")
             } catch (e : Exception) {
-               Timber.e("$e")
+
+               Timber.e("FAILURE: $e")
             }
 
         }

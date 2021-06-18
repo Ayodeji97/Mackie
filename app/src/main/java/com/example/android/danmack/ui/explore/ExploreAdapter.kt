@@ -6,9 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.android.danmack.databinding.TrendingListItemBinding
-import com.example.android.danmack.model.Song
+import com.example.android.danmack.model.SongData
 
-class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Song, ExploreAdapter.ExploreViewHolder> (SongDiffCallback()) {
+
+class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<SongData, ExploreAdapter.ExploreViewHolder> (SongDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder = ExploreViewHolder.from(parent)
@@ -21,8 +22,8 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Song,
 
     class ExploreViewHolder (val ui : TrendingListItemBinding) : RecyclerView.ViewHolder(ui.root) {
 
-        fun bind (item : Song, clickListener : SongClickListener) {
-            ui.song = item
+        fun bind (item : SongData, clickListener : SongClickListener) {
+           ui.songData = item
             ui.clickListener = clickListener
             ui.executePendingBindings()
         }
@@ -40,9 +41,9 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Song,
     /**
      * Get the change in the recyclerview list items
      * */
-    class SongDiffCallback : DiffUtil.ItemCallback<Song>() {
-        override fun areItemsTheSame(oldItem: Song, newItem: Song) = oldItem.tracks == newItem.tracks
-        override fun areContentsTheSame(oldItem: Song, newItem: Song) = oldItem == newItem
+    class SongDiffCallback : DiffUtil.ItemCallback<SongData>() {
+        override fun areItemsTheSame(oldItem: SongData, newItem: SongData) = oldItem.tracks == newItem.tracks
+        override fun areContentsTheSame(oldItem: SongData, newItem: SongData) = oldItem == newItem
 
     }
 
@@ -50,8 +51,8 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Song,
     /**
      * Asteroid click listener to handle click event
      * */
-    class SongClickListener(val clickListener : (song : Song) -> Unit) {
-        fun onClick (song: Song) = clickListener(song)
+    class SongClickListener(val clickListener : (song : SongData) -> Unit) {
+        fun onClick (song: SongData) = clickListener(song)
     }
 
 }
