@@ -2,8 +2,12 @@ package com.example.android.danmack.network
 
 
 
+
 import com.example.android.danmack.model.SongData
 import com.example.android.danmack.model.Track
+import com.example.android.danmack.sample.Response
+import com.example.android.danmack.sample.SampleData
+import com.example.android.danmack.sample.Song
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -20,12 +24,11 @@ interface SongApiService {
     ) : SongData
 
 
-
     @GET("songs/list-recommendations")
     suspend fun getAllRecommendations (
         @Header("x-rapidapi-key") api_key : String,
         @Header("x-rapidapi-host") host : String,
-        @Query("id") id : String,
+        @Query("key") id : String,
         @Query("locale") locale : String
     ) : SongData
 }

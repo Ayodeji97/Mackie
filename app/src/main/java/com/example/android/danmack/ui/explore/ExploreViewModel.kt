@@ -5,7 +5,10 @@ import com.example.android.danmack.model.SongData
 import com.example.android.danmack.model.Track
 
 import com.example.android.danmack.repository.SongRepository
+import com.example.android.danmack.sample.Response
+import com.example.android.danmack.sample.Song
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 import java.lang.Exception
@@ -19,27 +22,48 @@ class ExploreViewModel @Inject constructor
     val tracksList : LiveData<SongData>
         get() = _tracksList
 
+    private val _recommendedSongList = MutableLiveData<SongData>()
+    val recommendedSongList : LiveData<SongData>
+        get() = _recommendedSongList
+
 
 init {
-   getAllSongs()
+    getAllSongs()
+    getAllRecommendations()
 }
 
 
     fun getAllSongs () {
         viewModelScope.launch {
             try {
-                _tracksList.value = songRepository.getAllSongs()
+
+           _tracksList.value = songRepository.getAllSongs()
                 val see = songRepository.getAllSongs()
                 Timber.i("SUCCESS")
-                Timber.i("$see")
+               Timber.i("SEEE: $see")
             } catch (e : Exception) {
 
-               Timber.e("FAILURE: $e")
+               Timber.e("FAILURE: ${e.localizedMessage}")
             }
 
         }
     }
 
+
+    fun getAllRecommendations () {
+
+        viewModelScope.launch {
+
+            try {
+
+                _recommendedSongList.value = songRepository.getAllRecommendations()
+
+            }catch (e : Exception) {
+
+                Timber.e("RECOMMENDATION_FAILURE: $e")
+            }
+        }
+    }
 
 }
 

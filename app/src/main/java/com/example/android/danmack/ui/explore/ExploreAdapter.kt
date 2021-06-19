@@ -5,11 +5,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.example.android.danmack.databinding.TrendingListItemBinding
 import com.example.android.danmack.model.SongData
+import com.example.android.danmack.model.Track
 
 
-class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<SongData, ExploreAdapter.ExploreViewHolder> (SongDiffCallback()) {
+class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track, ExploreAdapter.ExploreViewHolder> (SongDiffCallback()) {
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder = ExploreViewHolder.from(parent)
@@ -22,8 +25,16 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<SongD
 
     class ExploreViewHolder (val ui : TrendingListItemBinding) : RecyclerView.ViewHolder(ui.root) {
 
-        fun bind (item : SongData, clickListener : SongClickListener) {
-           ui.songData = item
+        fun bind (item : Track, clickListener : SongClickListener) {
+            ui.songData = item
+            ui.trendingListItemTitleTv.text = item.title
+            ui.trendingListItemSubtitleTv.text = item.subtitle
+            Glide.with(itemView)
+                    .load(item.images.coverart)
+                    .centerCrop()
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(ui.trendingRecyclerViewImg)
+
             ui.clickListener = clickListener
             ui.executePendingBindings()
         }
@@ -41,9 +52,9 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<SongD
     /**
      * Get the change in the recyclerview list items
      * */
-    class SongDiffCallback : DiffUtil.ItemCallback<SongData>() {
-        override fun areItemsTheSame(oldItem: SongData, newItem: SongData) = oldItem.tracks == newItem.tracks
-        override fun areContentsTheSame(oldItem: SongData, newItem: SongData) = oldItem == newItem
+    class SongDiffCallback : DiffUtil.ItemCallback<Track>() {
+        override fun areItemsTheSame(oldItem: Track, newItem: Track) = oldItem.title == newItem.title
+        override fun areContentsTheSame(oldItem: Track, newItem: Track) = oldItem == newItem
 
     }
 

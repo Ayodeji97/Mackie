@@ -31,7 +31,7 @@
 
 
     <TextView
-        android:id="@+id/fragment_container_view_sub_heading_tv"
+        android:id="@+id/fragment_container_view_recommendation_heading_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/recommendation_str"
@@ -44,13 +44,11 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recommendation_recycler_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_20"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container_view_sub_heading_tv"
-        app:layout_constraintVertical_bias="0.0"
-        />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container_view_recommendation_heading_tv" />
 
 
     <TextView
@@ -68,12 +66,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/top_trending_recycler_view"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragment_container_view_trending_heading_tv"
-        tools:listitem="@layout/trending_list_item" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_container_view_trending_heading_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

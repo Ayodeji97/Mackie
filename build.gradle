@@ -73,5 +73,6 @@ ext {
     hiltAndroidXVersion = '1.0.0-alpha03'
     hiltVersion = '2.35'
     retrofitVersion = '2.9.0'
+    glideVersion = '4.11.0'
 
 }

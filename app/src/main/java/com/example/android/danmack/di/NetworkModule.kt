@@ -4,6 +4,8 @@ import com.example.android.danmack.network.SongApiService
 import com.example.android.danmack.utils.Constants.BASE_URL
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,7 +16,9 @@ import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
+import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 import javax.inject.Singleton
 
@@ -33,7 +37,6 @@ object NetworkModule {
     @Provides
     fun provideGsonBuilder(): Gson {
         return GsonBuilder()
-            .excludeFieldsWithoutExposeAnnotation()
             .create()
     }
 
@@ -47,17 +50,22 @@ object NetworkModule {
     @Singleton
     fun provideClient(logger: HttpLoggingInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
+                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(60, TimeUnit.SECONDS)
             .addInterceptor(logger)
             .build()
 
     }
+
+
         @Singleton
         @Provides
-        fun provideRetrofit(gson: Gson, client: OkHttpClient): Retrofit.Builder {
+        fun provideRetrofit(client: OkHttpClient, gson: Gson): Retrofit.Builder {
             return Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .client(client)
-                .addConverterFactory(GsonConverterFactory.create(gson))
+                    .addConverterFactory(GsonConverterFactory.create(gson))
+
 
         }
 

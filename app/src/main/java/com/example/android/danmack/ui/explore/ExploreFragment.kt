@@ -12,6 +12,7 @@ import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentExploreBinding
+import com.example.android.danmack.model.SongData
 import com.example.android.danmack.repository.SongRepository
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.*
@@ -22,7 +23,8 @@ import javax.inject.Inject
 class ExploreFragment : Fragment() {
 
     private val viewModel : ExploreViewModel by viewModels()
-    private lateinit var exploreAdapter: ExploreAdapter
+    private lateinit var exploreVerticalAdapter: ExploreAdapter
+    private lateinit var exploreHorizontalAdapter: ExploreAdapter
     private lateinit var ui : FragmentExploreBinding
 
     override fun onCreateView(
@@ -33,35 +35,44 @@ class ExploreFragment : Fragment() {
         ui = FragmentExploreBinding.inflate(inflater)
 
         ui.lifecycleOwner = this
-
         ui.exploreViewModel = viewModel
 
         val verticalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         val horizontalmanager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        exploreAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
+        exploreVerticalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
             Timber.i("Click")
         })
+
+        exploreHorizontalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
+            Timber.i("Click")
+        })
+
+
 
         // vertical orientation
         ui.topTrendingRecyclerView.layoutManager = verticalManager
 
         // horinzontal orientation
-        ui.recommendationRecyclerView.layoutManager = horizontalmanager
+       ui.recommendationRecyclerView.layoutManager = horizontalmanager
 
+        ui.recommendationRecyclerView.adapter = exploreHorizontalAdapter
+        ui.topTrendingRecyclerView.adapter = exploreVerticalAdapter
 
-        ui.topTrendingRecyclerView.adapter = exploreAdapter
 
         viewModel.tracksList.observe(viewLifecycleOwner, Observer {
+            Timber.i("TRACKSIZE: ${it.tracks.forEach { it.title }}")
+            exploreVerticalAdapter.submitList(it.tracks)
 
-           Timber.i("{TRACKLIST : ${it}}")
-          //  exploreAdapter.submitList(it)
-           // exploreAdapter.submitList(it)
         })
 
-       viewModel.getAllSongs()
+        viewModel.recommendedSongList.observe(viewLifecycleOwner, Observer {
+            Timber.i("RECOMMENDATION: ${it.tracks.forEach { it.title }}")
+            exploreHorizontalAdapter.submitList(it.tracks)
+        })
 
-
+        // viewModel.getAllSongs()
+        //viewModel.getAllRecommendations()
 
         return ui.root
     }
