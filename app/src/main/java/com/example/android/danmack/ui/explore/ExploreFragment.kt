@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.android.danmack.MyBottomSheetDialogFragment
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentExploreBinding
 import com.example.android.danmack.model.SongData
@@ -41,11 +42,15 @@ class ExploreFragment : Fragment() {
         val horizontalmanager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         exploreVerticalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
-            Timber.i("Click")
+            Toast.makeText(requireContext(), "CLIIIKKK", Toast.LENGTH_SHORT).show()
+            Log.i("CLICKK", "SEEEEE")
+            MyBottomSheetDialogFragment().show(requireActivity().supportFragmentManager, "Sheet")
         })
 
         exploreHorizontalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
-            Timber.i("Click")
+            MyBottomSheetDialogFragment().show(requireActivity().supportFragmentManager, "Sheet")
+
+
         })
 
 
@@ -71,13 +76,7 @@ class ExploreFragment : Fragment() {
             exploreHorizontalAdapter.submitList(it.tracks)
         })
 
-        // viewModel.getAllSongs()
-        //viewModel.getAllRecommendations()
-
         return ui.root
     }
-
-
-
 
 }

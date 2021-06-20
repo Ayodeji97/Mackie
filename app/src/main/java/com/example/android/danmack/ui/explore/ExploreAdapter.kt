@@ -7,13 +7,14 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.example.android.danmack.MyBottomSheetDialogFragment
 import com.example.android.danmack.databinding.TrendingListItemBinding
 import com.example.android.danmack.model.SongData
 import com.example.android.danmack.model.Track
+import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
 class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track, ExploreAdapter.ExploreViewHolder> (SongDiffCallback()) {
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder = ExploreViewHolder.from(parent)
 
@@ -35,6 +36,7 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ui.trendingRecyclerViewImg)
 
+
             ui.clickListener = clickListener
             ui.executePendingBindings()
         }
@@ -53,6 +55,7 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track
      * Get the change in the recyclerview list items
      * */
     class SongDiffCallback : DiffUtil.ItemCallback<Track>() {
+
         override fun areItemsTheSame(oldItem: Track, newItem: Track) = oldItem.title == newItem.title
         override fun areContentsTheSame(oldItem: Track, newItem: Track) = oldItem == newItem
 
@@ -62,8 +65,8 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track
     /**
      * Asteroid click listener to handle click event
      * */
-    class SongClickListener(val clickListener : (song : SongData) -> Unit) {
-        fun onClick (song: SongData) = clickListener(song)
+    class SongClickListener(val clickListener : (song : Track) -> Unit) {
+        fun onClick (song: Track) = clickListener(song)
     }
 
 }

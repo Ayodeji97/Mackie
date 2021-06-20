@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <ImageView
+        android:id="@+id/bottom_sheet_layout_img"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/lagbaja_img"
+        android:layout_marginTop="@dimen/margin_18"
+        android:layout_marginStart="@dimen/margin_18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/bottom_sheet_layout_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="DaBaby"
+        android:textAppearance="@style/CustomiseBody2"
+        android:layout_marginStart="@dimen/margin_18"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_layout_img"
+        app:layout_constraintTop_toTopOf="@+id/bottom_sheet_layout_img"
+        android:layout_marginTop="@dimen/margin_16"
+        />
+
+    <TextView
+        android:id="@+id/bottom_sheet_layout_subtitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="Ball If I want To"
+        android:textAppearance="?textAppearanceHeadline6"
+        app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_title"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_title"
+        android:layout_marginTop="@dimen/margin_8"
+        />
+
+    <View
+        android:id="@+id/first_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/secondary_color"
+        android:layout_marginTop="@dimen/margin_8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_img" />
+
+
+    <ImageView
+        android:id="@+id/bottom_sheet_layout_favourite_btn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/heart"
+        app:layout_constraintTop_toBottomOf="@+id/first_view"
+        app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_img"
+        android:layout_marginStart="@dimen/margin_18"
+        android:layout_marginTop="@dimen/margin_16"
+        />
+
+    <TextView
+        android:id="@+id/bottom_sheet_layout_favourite_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/favourite_str"
+        android:layout_marginTop="@dimen/margin_8"
+        android:textAppearance="@style/CustomiseBody2"
+        app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_favourite_btn"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_favourite_btn"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_sheet_layout_favourite_btn"
+        />
+
+
+    <ImageView
+        android:id="@+id/bottom_sheet_layout_playlist_btn"
+        android:layout_width="35dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="@dimen/margin_16"
+        android:src="@drawable/playlist"
+        app:layout_constraintStart_toEndOf="@+id/bottom_sheet_layout_favourite_btn"
+        app:layout_constraintTop_toBottomOf="@+id/first_view" />
+
+    <TextView
+        android:id="@+id/bottom_sheet_layout_playlist_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/playlist_str"
+        android:layout_marginTop="@dimen/margin_8"
+        android:textAppearance="@style/CustomiseBody2"
+        app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_playlist_btn"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_sheet_layout_playlist_btn"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_playlist_btn"
+        />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bottom_sheet_layout_play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cornerRadius="10dp"
+        android:text="Play"
+        android:layout_marginTop="@dimen/margin_16"
+        android:textAppearance="@style/CustomiseBody2"
+        android:drawableStart="@drawable/ic_play_icon"
+        android:backgroundTint="@color/black_500"
+        app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_favourite_tv"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_favourite_tv" />
+
+
+
+    <View
+        android:id="@+id/second_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/secondary_color"
+        android:layout_marginTop="@dimen/margin_16"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_play_btn"
+         />
+
+
+    <ImageView
+        android:id="@+id/user_img"
+        android:layout_width="@dimen/margin_20"
+        android:layout_height="@dimen/margin_20"
+        android:src="@drawable/user"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/second_view" />
+
+
+    <TextView
+        android:id="@+id/bottom_sheet_layout_author_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/CustomiseBody2"
+        android:layout_marginStart="@dimen/margin_16"
+        app:layout_constraintBottom_toBottomOf="@+id/user_img"
+        app:layout_constraintStart_toEndOf="@+id/user_img"
+        app:layout_constraintTop_toTopOf="@+id/user_img"
+        tools:text="Authors' name" />
+
+
+    <View
+        android:id="@+id/third_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/secondary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_author_name_tv" />
+
+
+
+    <ImageView
+        android:id="@+id/link_img"
+        android:layout_width="@dimen/margin_20"
+        android:layout_height="@dimen/margin_20"
+        android:src="@drawable/link"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/third_view" />
+
+
+    <TextView
+        android:id="@+id/bottom_sheet_layout_copy_link_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/copy_link_str"
+        android:layout_marginStart="@dimen/margin_16"
+        android:textAppearance="@style/CustomiseBody2"
+        app:layout_constraintBottom_toBottomOf="@+id/link_img"
+        app:layout_constraintStart_toEndOf="@+id/link_img"
+        app:layout_constraintTop_toTopOf="@+id/link_img" />
+
+    <View
+        android:id="@+id/fourth_view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="@color/secondary_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        android:layout_marginTop="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_copy_link_tv" />
+
+
+
+    <ImageView
+        android:id="@+id/share_img"
+        android:layout_width="@dimen/margin_20"
+        android:layout_height="@dimen/margin_20"
+        android:src="@drawable/share"
+        android:layout_marginStart="@dimen/margin_20"
+        android:layout_marginTop="@dimen/margin_20"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fourth_view" />
+
+
+    <TextView
+        android:id="@+id/bottom_sheet_layout_share_link_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/share_link_str"
+        android:layout_marginStart="@dimen/margin_20"
+        android:textAppearance="@style/CustomiseBody2"
+        app:layout_constraintBottom_toBottomOf="@+id/share_img"
+        app:layout_constraintStart_toEndOf="@+id/share_img"
+        app:layout_constraintTop_toTopOf="@+id/share_img" />
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/bottom_sheet_layout_cancel_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:cornerRadius="@dimen/margin_8"
+        android:text="Cancel"
+        android:textAppearance="@style/CustomiseBody2"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginEnd="@dimen/margin_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_share_link_tv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
