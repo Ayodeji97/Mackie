@@ -6,5 +6,4 @@ import androidx.room.RoomDatabase
 
 abstract class SongDatabase : RoomDatabase() {
 
-
 }

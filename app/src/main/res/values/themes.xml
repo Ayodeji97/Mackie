@@ -48,6 +48,14 @@
         <item name="fontFamily">@font/montserrat</item>
         <item name="android:textSize">@dimen/textSize_14</item>
     </style>
+    
+    <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/BottomSheetDialogTheme</item>
+    </style>
+
+    <style name="BottomSheetStyle" parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background"> @color/primary_color </item>
+    </style>
 
     <!--    <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline6">-->
 <!--        <item name="android:textSize">24sp</item>-->
