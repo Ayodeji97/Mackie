@@ -9,7 +9,11 @@
         android:id="@+id/exploreFragment"
         android:name="com.example.android.danmack.ui.explore.ExploreFragment"
         android:label="fragment_explore"
-        tools:layout="@layout/fragment_explore" />
+        tools:layout="@layout/fragment_explore" >
+        <action
+            android:id="@+id/action_exploreFragment_to_exploreDetailFragment"
+            app:destination="@id/exploreDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/searchFragment"
         android:name="com.example.android.danmack.ui.search.SearchFragment"
@@ -25,4 +29,13 @@
         android:name="com.example.android.danmack.ui.library.LibraryFragment"
         android:label="fragment_library"
         tools:layout="@layout/fragment_library" />
+    <fragment
+        android:id="@+id/exploreDetailFragment"
+        android:name="com.example.android.danmack.ui.exploredetail.ExploreDetailFragment"
+        android:label="fragment_explore_detail"
+        tools:layout="@layout/fragment_explore_detail" >
+        <argument
+            android:name="track"
+            app:argType="com.example.android.danmack.model.Track" />
+    </fragment>
 </navigation>

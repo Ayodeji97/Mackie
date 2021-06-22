@@ -1,0 +1,319 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="trackSelected"
+            type="com.example.android.danmack.model.Track" />
+    </data>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.exploredetail.ExploreDetailFragment">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appbar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.appbar.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:contentScrim="@color/accent_color"
+            app:layout_scrollFlags="scroll|snap|exitUntilCollapsed"
+            app:title="@string/detail_str"
+            >
+
+
+            <ImageView
+                android:id="@+id/artist_cover_img"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/lagbaja_img"
+                app:layout_collapseMode="parallax" />
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_collapseMode="pin"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+
+        </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        android:background="@drawable/curve_bg"
+        >
+
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <ImageView
+                android:id="@+id/artist_img"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:src="@{trackSelected.images.coverart}"
+                android:layout_marginTop="@dimen/margin_18"
+                android:layout_marginStart="@dimen/margin_18"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <TextView
+                android:id="@+id/bottom_sheet_layout_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="DaBaby"
+                android:text="@{trackSelected.title}"
+                android:textAppearance="@style/CustomiseBody2"
+                android:layout_marginStart="@dimen/margin_18"
+                app:layout_constraintStart_toEndOf="@+id/artist_img"
+                app:layout_constraintTop_toTopOf="@+id/artist_img"
+                android:layout_marginTop="@dimen/margin_16"
+                />
+
+            <TextView
+                android:id="@+id/bottom_sheet_layout_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Ball If I want To"
+                android:text="@{trackSelected.subtitle}"
+                android:textAppearance="?textAppearanceHeadline6"
+                app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_title"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_title"
+                android:layout_marginTop="@dimen/margin_8"
+                />
+
+
+            <View
+                android:id="@+id/first_view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/secondary_color"
+                android:layout_marginTop="@dimen/margin_8"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/artist_img" />
+
+
+            <ImageView
+                android:id="@+id/bottom_sheet_layout_favourite_btn"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/heart"
+                app:layout_constraintTop_toBottomOf="@+id/first_view"
+                app:layout_constraintStart_toStartOf="@+id/artist_img"
+                android:layout_marginStart="@dimen/margin_18"
+                android:layout_marginTop="@dimen/margin_16"
+                />
+
+            <TextView
+                android:id="@+id/bottom_sheet_layout_favourite_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/favourite_str"
+                android:layout_marginTop="@dimen/margin_8"
+                android:textAppearance="@style/CustomiseBody2"
+                app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_favourite_btn"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_favourite_btn"
+                app:layout_constraintEnd_toEndOf="@+id/bottom_sheet_layout_favourite_btn"
+                />
+
+
+            <ImageView
+                android:id="@+id/bottom_sheet_layout_playlist_btn"
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginTop="@dimen/margin_16"
+                android:src="@drawable/playlist"
+                app:layout_constraintStart_toEndOf="@+id/bottom_sheet_layout_favourite_btn"
+                app:layout_constraintTop_toBottomOf="@+id/first_view" />
+
+            <TextView
+                android:id="@+id/bottom_sheet_layout_playlist_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/playlist_str"
+                android:layout_marginTop="@dimen/margin_8"
+                android:textAppearance="@style/CustomiseBody2"
+                app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_playlist_btn"
+                app:layout_constraintEnd_toEndOf="@+id/bottom_sheet_layout_playlist_btn"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_playlist_btn"
+                />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bottom_sheet_layout_play_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cornerRadius="10dp"
+                android:text="Play"
+                android:layout_marginTop="@dimen/margin_16"
+                android:textAppearance="@style/CustomiseBody2"
+                android:drawableStart="@drawable/ic_play_icon"
+                android:backgroundTint="@color/black_500"
+                app:layout_constraintStart_toStartOf="@+id/bottom_sheet_layout_favourite_tv"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_favourite_tv" />
+
+
+
+            <View
+                android:id="@+id/second_view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/secondary_color"
+                android:layout_marginTop="@dimen/margin_16"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_play_btn"
+                />
+
+
+            <ImageView
+                android:id="@+id/user_img"
+                android:layout_width="@dimen/margin_20"
+                android:layout_height="@dimen/margin_20"
+                android:src="@drawable/user"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/second_view" />
+
+
+            <TextView
+                android:id="@+id/author_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/CustomiseBody2"
+                android:layout_marginStart="@dimen/margin_16"
+                android:text="@{trackSelected.title}"
+                app:layout_constraintBottom_toBottomOf="@+id/user_img"
+                app:layout_constraintStart_toEndOf="@+id/user_img"
+                app:layout_constraintTop_toTopOf="@+id/user_img"
+                tools:text="Authors' name" />
+
+
+            <View
+                android:id="@+id/third_view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/secondary_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="@dimen/margin_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/author_name" />
+
+
+
+            <ImageView
+                android:id="@+id/link_img"
+                android:layout_width="@dimen/margin_20"
+                android:layout_height="@dimen/margin_20"
+                android:src="@drawable/link"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/third_view" />
+
+
+            <TextView
+                android:id="@+id/bottom_sheet_layout_copy_link_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/copy_link_str"
+                android:layout_marginStart="@dimen/margin_16"
+                android:textAppearance="@style/CustomiseBody2"
+                app:layout_constraintBottom_toBottomOf="@+id/link_img"
+                app:layout_constraintStart_toEndOf="@+id/link_img"
+                app:layout_constraintTop_toTopOf="@+id/link_img" />
+
+
+            <ImageView
+                android:id="@+id/copy_img"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/margin_24"
+                android:src="@drawable/copy_img"
+                app:layout_constraintBottom_toBottomOf="@+id/bottom_sheet_layout_copy_link_tv"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/bottom_sheet_layout_copy_link_tv"
+                app:tint="@color/secondary_color" />
+
+            <View
+                android:id="@+id/fourth_view"
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:background="@color/secondary_color"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                android:layout_marginTop="@dimen/margin_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_copy_link_tv" />
+
+
+
+
+
+            <ImageView
+                android:id="@+id/share_img"
+                android:layout_width="@dimen/margin_20"
+                android:layout_height="@dimen/margin_20"
+                android:src="@drawable/share"
+                android:layout_marginStart="@dimen/margin_20"
+                android:layout_marginTop="@dimen/margin_20"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fourth_view" />
+
+
+            <TextView
+                android:id="@+id/bottom_sheet_layout_share_link_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/share_link_str"
+                android:layout_marginStart="@dimen/margin_20"
+                android:textAppearance="@style/CustomiseBody2"
+                app:layout_constraintBottom_toBottomOf="@+id/share_img"
+                app:layout_constraintStart_toEndOf="@+id/share_img"
+                app:layout_constraintTop_toTopOf="@+id/share_img" />
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/bottom_sheet_layout_cancel_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                app:cornerRadius="@dimen/margin_8"
+                android:text="Cancel"
+                android:textAppearance="@style/CustomiseBody2"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginStart="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bottom_sheet_layout_share_link_tv" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</layout>

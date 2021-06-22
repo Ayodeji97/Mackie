@@ -7,10 +7,12 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.example.android.danmack.MyBottomSheetDialogFragment
 import com.example.android.danmack.databinding.TrendingListItemBinding
 import com.example.android.danmack.model.SongData
 import com.example.android.danmack.model.Track
+import com.example.android.danmack.network.networkmodel.NetworkTrackEntity
 import com.google.android.material.bottomsheet.BottomSheetDialog
 
 
@@ -27,12 +29,12 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track
     class ExploreViewHolder (val ui : TrendingListItemBinding) : RecyclerView.ViewHolder(ui.root) {
 
         fun bind (item : Track, clickListener : SongClickListener) {
-            ui.songData = item
+            ui.track = item
             ui.trendingListItemTitleTv.text = item.title
             ui.trendingListItemSubtitleTv.text = item.subtitle
             Glide.with(itemView)
                     .load(item.images.coverart)
-                    .centerCrop()
+                    .apply(RequestOptions.centerCropTransform())
                     .transition(DrawableTransitionOptions.withCrossFade())
                     .into(ui.trendingRecyclerViewImg)
 
@@ -56,7 +58,7 @@ class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track
      * */
     class SongDiffCallback : DiffUtil.ItemCallback<Track>() {
 
-        override fun areItemsTheSame(oldItem: Track, newItem: Track) = oldItem.title == newItem.title
+        override fun areItemsTheSame(oldItem: Track, newItem: Track) = oldItem.key == newItem.key
         override fun areContentsTheSame(oldItem: Track, newItem: Track) = oldItem == newItem
 
     }

@@ -1,6 +1,6 @@
 package com.example.android.danmack.local.localmodel
 
-data class ImageXEntity (
+data class LocalImagesXEntity (
         val background: String,
         val coverart: String,
         val coverarthq: String,

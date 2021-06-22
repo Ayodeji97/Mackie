@@ -9,6 +9,7 @@ plugins {
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
 }
 
 
@@ -110,12 +111,16 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:1.0.0"
 
     implementation "com.github.bumptech.glide:glide:$glideVersion"
+    // Coroutines
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.4.1'
 
 
     //Timber logging library dependency
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     implementation 'com.squareup.okhttp3:logging-interceptor:4.5.0'
+
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 
 
 

@@ -16,7 +16,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.explore.ExploreFragment">
+    tools:context=".ui.explore.ExploreFragment"
+    android:background="@color/primary_color"
+    >
 
     <TextView
         android:id="@+id/fragment_explore_heading_tv"

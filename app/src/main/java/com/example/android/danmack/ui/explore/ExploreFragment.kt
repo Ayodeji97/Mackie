@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.danmack.MyBottomSheetDialogFragment
 import com.example.android.danmack.R
@@ -41,16 +42,12 @@ class ExploreFragment : Fragment() {
         val verticalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         val horizontalmanager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
-        exploreVerticalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
-            Toast.makeText(requireContext(), "CLIIIKKK", Toast.LENGTH_SHORT).show()
-            Log.i("CLICKK", "SEEEEE")
-            MyBottomSheetDialogFragment().show(requireActivity().supportFragmentManager, "Sheet")
+        exploreVerticalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {track ->
+            viewModel.onTopTrendSongClicked(track)
         })
 
-        exploreHorizontalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
-            MyBottomSheetDialogFragment().show(requireActivity().supportFragmentManager, "Sheet")
-
-
+        exploreHorizontalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {track->
+            viewModel.onRecommendationSongClicked(track)
         })
 
 
@@ -65,16 +62,24 @@ class ExploreFragment : Fragment() {
         ui.topTrendingRecyclerView.adapter = exploreVerticalAdapter
 
 
-        viewModel.tracksList.observe(viewLifecycleOwner, Observer {
-            Timber.i("TRACKSIZE: ${it.tracks.forEach { it.title }}")
-            exploreVerticalAdapter.submitList(it.tracks)
-
+        viewModel.allTrackList.observe(viewLifecycleOwner, Observer {
+            exploreVerticalAdapter.submitList(it)
         })
 
-        viewModel.recommendedSongList.observe(viewLifecycleOwner, Observer {
-            Timber.i("RECOMMENDATION: ${it.tracks.forEach { it.title }}")
-            exploreHorizontalAdapter.submitList(it.tracks)
+
+        viewModel.allRecommendationsList.observe(viewLifecycleOwner, Observer {
+            exploreHorizontalAdapter.submitList(it)
         })
+
+
+        viewModel.navigateToTopTrendDataDetail.observe(viewLifecycleOwner, Observer {track->
+            track?.let {
+                this.findNavController().navigate(ExploreFragmentDirections.actionExploreFragmentToExploreDetailFragment(track))
+                viewModel.onNavigatedFinish()
+            }
+        })
+
+
 
         return ui.root
     }

@@ -8,7 +8,7 @@
     <data>
 
         <variable
-            name="songData"
+            name="track"
             type="com.example.android.danmack.model.Track" />
 
         <variable
@@ -21,7 +21,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="@dimen/margin_18"
-    android:onClick="@{() -> clickListener.onClick(songData)}"
+    android:onClick="@{() -> clickListener.onClick(track)}"
 
    >
 
