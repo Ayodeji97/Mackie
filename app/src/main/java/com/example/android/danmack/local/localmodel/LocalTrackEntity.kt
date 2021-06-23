@@ -3,7 +3,7 @@ package com.example.android.danmack.local.localmodel
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.android.danmack.model.ImagesX
+import com.example.android.danmack.model.songmodel.ImagesX
 
 @Entity(tableName = "song_table")
 data class LocalTrackEntity (

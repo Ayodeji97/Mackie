@@ -36,6 +36,6 @@
         tools:layout="@layout/fragment_explore_detail" >
         <argument
             android:name="track"
-            app:argType="com.example.android.danmack.model.Track" />
+            app:argType="com.example.android.danmack.model.songmodel.Track" />
     </fragment>
 </navigation>

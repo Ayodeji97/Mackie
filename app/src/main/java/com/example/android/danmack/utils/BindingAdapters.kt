@@ -1,8 +1,7 @@
-import android.icu.text.CaseMap
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
-import com.example.android.danmack.model.SongData
-import com.example.android.danmack.model.Track
+import com.example.android.danmack.model.songmodel.SongData
+import com.example.android.danmack.model.songmodel.Track
 
 
 @BindingAdapter("songTitle")

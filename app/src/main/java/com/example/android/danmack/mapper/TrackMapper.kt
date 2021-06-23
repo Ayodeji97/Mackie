@@ -2,7 +2,7 @@ package com.example.android.danmack.mapper
 
 
 import com.example.android.danmack.local.localmodel.LocalTrackEntity
-import com.example.android.danmack.model.Track
+import com.example.android.danmack.model.songmodel.Track
 
 /**
  * Asteroid mapper extension function to map database model to domain model
@@ -14,12 +14,12 @@ fun List<LocalTrackEntity>.asTrackDomainModel(): List<Track> {
     return map { localTrackEntity ->
 
         Track(
-            key = localTrackEntity.key,
-            title = localTrackEntity.title,
-            subtitle = localTrackEntity.subtitle,
-            type = localTrackEntity.type,
-            url = localTrackEntity.url,
-            images = localTrackEntity.localImages
+                key = localTrackEntity.key,
+                title = localTrackEntity.title,
+                subtitle = localTrackEntity.subtitle,
+                type = localTrackEntity.type,
+                url = localTrackEntity.url,
+                images = localTrackEntity.localImages
         )
 
     }

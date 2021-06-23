@@ -1,8 +1,7 @@
 package com.example.android.danmack.ui.explore
 
 import androidx.lifecycle.*
-import com.example.android.danmack.model.SongData
-import com.example.android.danmack.model.Track
+import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.network.networkmodel.NetworkTrackEntity
 
 import com.example.android.danmack.repository.SongRepository
@@ -41,8 +40,11 @@ init {
 
     private fun getRefreshTracksAndRecommendations () {
         viewModelScope.launch {
-            songRepository.refreshTracks()
-            songRepository.refreshRecommendations()
+//            songRepository.refreshTracks()
+//            songRepository.refreshRecommendations()
+           // songRepository.autoCompleteSearchSongs()
+            songRepository.searchSongs()
+
         }
     }
 
@@ -61,8 +63,9 @@ init {
 
 
 
+    suspend fun searchResult () {
 
-
+    }
 
 
 }

@@ -7,7 +7,7 @@
 
         <variable
             name="trackSelected"
-            type="com.example.android.danmack.model.Track" />
+            type="com.example.android.danmack.model.songmodel.Track" />
     </data>
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     android:layout_width="match_parent"

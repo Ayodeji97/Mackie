@@ -8,13 +8,11 @@ import com.example.android.danmack.local.SongDatabase
 import com.example.android.danmack.mapper.asRecommendedDatabaseModel
 import com.example.android.danmack.mapper.asTrackDatabaseModel
 import com.example.android.danmack.mapper.asTrackDomainModel
-import com.example.android.danmack.model.Track
+import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.network.SongApiService
-import com.example.android.danmack.network.networkmodel.NetworkTrackEntity
 import com.example.android.danmack.utils.Constants.API_HOST
 import com.example.android.danmack.utils.Constants.API_KEY
 import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import timber.log.Timber
 import java.lang.Exception
@@ -80,5 +78,40 @@ class SongRepository @Inject constructor(
             }
         }
     }
+
+
+    suspend fun autoCompleteSearchSongs () {
+
+        withContext(ioDispatcher) {
+
+            try {
+                val searchSongResult = songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, "kiss the", locale)
+
+                Timber.i("SEARCH_RESULT: $searchSongResult")
+            } catch (e : Exception) {
+
+                Timber.i("ERROR_SEARCH_RESULT")
+            }
+        }
+    }
+
+
+    suspend fun searchSongs () {
+
+        withContext(ioDispatcher) {
+
+            try {
+                val searchSongResult = songApiService.searchSongs(API_KEY, API_HOST, "kiss the rain", locale, "0", "5")
+
+                Timber.i("RESULT: $searchSongResult")
+            } catch (e : Exception) {
+
+                Timber.i("ERRRRR : ${e.localizedMessage}")
+            }
+        }
+    }
+
+
+
 
 }

@@ -8,12 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
-import com.example.android.danmack.MyBottomSheetDialogFragment
 import com.example.android.danmack.databinding.TrendingListItemBinding
-import com.example.android.danmack.model.SongData
-import com.example.android.danmack.model.Track
-import com.example.android.danmack.network.networkmodel.NetworkTrackEntity
-import com.google.android.material.bottomsheet.BottomSheetDialog
+import com.example.android.danmack.model.songmodel.Track
 
 
 class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track, ExploreAdapter.ExploreViewHolder> (SongDiffCallback()) {

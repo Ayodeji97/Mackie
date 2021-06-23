@@ -1,4 +1,4 @@
-package com.example.android.danmack.model
+package com.example.android.danmack.model.songmodel
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

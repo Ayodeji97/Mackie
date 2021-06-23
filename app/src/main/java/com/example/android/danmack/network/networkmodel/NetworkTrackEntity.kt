@@ -1,9 +1,6 @@
 package com.example.android.danmack.network.networkmodel
 
-import androidx.room.Embedded
-import androidx.room.PrimaryKey
-import com.example.android.danmack.local.localmodel.LocalImagesXEntity
-import com.example.android.danmack.model.ImagesX
+import com.example.android.danmack.model.songmodel.ImagesX
 
 
 data class NetworkTrackEntity (

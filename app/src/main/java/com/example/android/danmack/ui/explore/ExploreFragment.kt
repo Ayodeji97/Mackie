@@ -1,25 +1,16 @@
 package com.example.android.danmack.ui.explore
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.android.danmack.MyBottomSheetDialogFragment
-import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentExploreBinding
-import com.example.android.danmack.model.SongData
-import com.example.android.danmack.repository.SongRepository
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.*
-import timber.log.Timber
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ExploreFragment : Fragment() {

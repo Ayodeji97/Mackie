@@ -9,7 +9,7 @@
 
         <variable
             name="track"
-            type="com.example.android.danmack.model.Track" />
+            type="com.example.android.danmack.model.songmodel.Track" />
 
         <variable
             name="clickListener"
