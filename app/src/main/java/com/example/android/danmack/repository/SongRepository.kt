@@ -8,6 +8,8 @@ import com.example.android.danmack.local.SongDatabase
 import com.example.android.danmack.mapper.asRecommendedDatabaseModel
 import com.example.android.danmack.mapper.asTrackDatabaseModel
 import com.example.android.danmack.mapper.asTrackDomainModel
+import com.example.android.danmack.model.searchmodel.AutoComplete
+import com.example.android.danmack.model.searchmodel.TermData
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.network.SongApiService
 import com.example.android.danmack.utils.Constants.API_HOST
@@ -45,6 +47,7 @@ class SongRepository @Inject constructor(
                 it.asTrackDomainModel()
             }
 
+    val query = ""
 
 
 
@@ -80,20 +83,25 @@ class SongRepository @Inject constructor(
     }
 
 
-    suspend fun autoCompleteSearchSongs () {
+    suspend fun autoCompleteSearchSongs (query:String) {
 
         withContext(ioDispatcher) {
 
             try {
-                val searchSongResult = songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, "kiss the", locale)
 
+                val searchSongResult = songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, query, locale)
                 Timber.i("SEARCH_RESULT: $searchSongResult")
+                songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, query, locale)
+
             } catch (e : Exception) {
 
                 Timber.i("ERROR_SEARCH_RESULT")
             }
         }
+
     }
+
+
 
 
     suspend fun searchSongs () {

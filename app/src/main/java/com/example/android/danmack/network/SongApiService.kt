@@ -38,7 +38,7 @@ interface SongApiService {
             @Header("x-rapidapi-host") host : String,
             @Query("term") term : String,
             @Query("locale") locale : String
-    ) : AutoComplete
+    ) : List<TermData>
 
 
     @GET("search")

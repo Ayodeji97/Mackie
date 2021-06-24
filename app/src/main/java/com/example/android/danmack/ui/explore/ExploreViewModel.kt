@@ -42,8 +42,8 @@ init {
         viewModelScope.launch {
 //            songRepository.refreshTracks()
 //            songRepository.refreshRecommendations()
-           // songRepository.autoCompleteSearchSongs()
-            songRepository.searchSongs()
+            //songRepository.autoCompleteSearchSongs()
+           // songRepository.searchSongs()
 
         }
     }
@@ -63,9 +63,7 @@ init {
 
 
 
-    suspend fun searchResult () {
 
-    }
 
 
 }
