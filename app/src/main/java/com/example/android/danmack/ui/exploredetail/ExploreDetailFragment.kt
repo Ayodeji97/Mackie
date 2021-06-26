@@ -15,12 +15,15 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentExploreDetailBinding
+import com.example.android.danmack.model.songmodel.Track
 import com.squareup.picasso.Picasso
 
 
 class ExploreDetailFragment : Fragment() {
 
     private lateinit var ui : FragmentExploreDetailBinding
+
+    private lateinit var trackSelected : Track
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -34,7 +37,7 @@ class ExploreDetailFragment : Fragment() {
 
 
 
-        val trackSelected = ExploreDetailFragmentArgs.fromBundle(requireArguments()).track
+       trackSelected = ExploreDetailFragmentArgs.fromBundle(requireArguments()).track
 
         ui.trackSelected = trackSelected
 
@@ -44,27 +47,16 @@ class ExploreDetailFragment : Fragment() {
             Clip.clipReferral(url, requireActivity())
         }
 
+        ui.bottomSheetLayoutPlayBtn.setOnClickListener {
+            playSongInBrowser()
+        }
 
-        // share referral link with friends
-//        private fun shareIntent () {
-//            val title = "Share link with friends and family"
-//            val linkToShare = url
-//            val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
-//                .setType("text/plain")
-//                .setText(linkToShare)
-//                .intent
-//
-//            val chooser = Intent.createChooser(shareIntent, title)
-//            try {
-//                startActivity(chooser)
-//            } catch (e: ActivityNotFoundException) {
-//                //  Define what to happen if no activity can handle the intent.
-//                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.theopen.android"))
-//                startActivity(intent)
-//
-//            }
-//
-//        }
+        ui.shareImg.setOnClickListener {
+            shareSongLinkIntent()
+        }
+
+
+
 
 
         Picasso.with(context).load(trackSelected.images.coverart).into(ui.artistCoverImg)
@@ -73,6 +65,39 @@ class ExploreDetailFragment : Fragment() {
 
 
         return ui.root
+    }
+
+    private fun playSongInBrowser () {
+
+        val songUri = trackSelected.url
+
+        val defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER)
+
+        defaultBrowser.data = Uri.parse(songUri)
+
+        startActivity(defaultBrowser)
+    }
+
+
+    // share referral link with friends
+    private fun shareSongLinkIntent () {
+        val title = "Share link with friends and family"
+        val linkToShare = trackSelected.url
+        val shareIntent = ShareCompat.IntentBuilder.from(requireActivity())
+                .setType("text/plain")
+                .setText(linkToShare)
+                .intent
+
+        val chooser = Intent.createChooser(shareIntent, title)
+        try {
+            startActivity(chooser)
+        } catch (e: ActivityNotFoundException) {
+            //  Define what to happen if no activity can handle the intent.
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.theopen.android"))
+            startActivity(intent)
+
+        }
+
     }
 
 
