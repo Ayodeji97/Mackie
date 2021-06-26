@@ -9,7 +9,7 @@ import com.example.android.danmack.mapper.asRecommendedDatabaseModel
 import com.example.android.danmack.mapper.asTrackDatabaseModel
 import com.example.android.danmack.mapper.asTrackDomainModel
 import com.example.android.danmack.model.searchmodel.AutoComplete
-import com.example.android.danmack.model.searchmodel.TermData
+import com.example.android.danmack.model.searchmodel.SearchData
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.network.SongApiService
 import com.example.android.danmack.utils.Constants.API_HOST
@@ -17,7 +17,6 @@ import com.example.android.danmack.utils.Constants.API_KEY
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import timber.log.Timber
-import java.lang.Exception
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -34,6 +33,8 @@ class SongRepository @Inject constructor(
     val id = "40008598"
     val locale = "en-US"
     val recommendedId = "484129036"
+    val offset = "0"
+    val limit = "5"
 
 
     val allTopTrends : LiveData<List<Track>> =
@@ -83,40 +84,13 @@ class SongRepository @Inject constructor(
     }
 
 
-    suspend fun autoCompleteSearchSongs (query:String) {
-
-        withContext(ioDispatcher) {
-
-            try {
-
-                val searchSongResult = songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, query, locale)
-                Timber.i("SEARCH_RESULT: $searchSongResult")
-                songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, query, locale)
-
-            } catch (e : Exception) {
-
-                Timber.i("ERROR_SEARCH_RESULT")
-            }
-        }
-
+    suspend fun autoCompleteSearchSongs(query: String): AutoComplete {
+        return songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, query, locale)
     }
 
 
-
-
-    suspend fun searchSongs () {
-
-        withContext(ioDispatcher) {
-
-            try {
-                val searchSongResult = songApiService.searchSongs(API_KEY, API_HOST, "kiss the rain", locale, "0", "5")
-
-                Timber.i("RESULT: $searchSongResult")
-            } catch (e : Exception) {
-
-                Timber.i("ERRRRR : ${e.localizedMessage}")
-            }
-        }
+    suspend fun searchSongs(query: String) : SearchData {
+            return  songApiService.searchSongs(API_KEY, API_HOST, query, locale, offset, limit)
     }
 
 

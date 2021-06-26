@@ -31,7 +31,7 @@ class ExploreFragment : Fragment() {
         ui.exploreViewModel = viewModel
 
         val verticalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
-        val horizontalmanager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        val horizontalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
 
         exploreVerticalAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {track ->
             viewModel.onTopTrendSongClicked(track)
@@ -47,7 +47,7 @@ class ExploreFragment : Fragment() {
         ui.topTrendingRecyclerView.layoutManager = verticalManager
 
         // horinzontal orientation
-       ui.recommendationRecyclerView.layoutManager = horizontalmanager
+       ui.recommendationRecyclerView.layoutManager = horizontalManager
 
         ui.recommendationRecyclerView.adapter = exploreHorizontalAdapter
         ui.topTrendingRecyclerView.adapter = exploreVerticalAdapter

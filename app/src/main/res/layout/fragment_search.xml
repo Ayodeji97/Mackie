@@ -37,6 +37,16 @@
         android:id="@+id/search_recycler_view"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/search_view" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/search_result_recycler_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_view" />

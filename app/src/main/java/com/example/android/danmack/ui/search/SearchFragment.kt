@@ -1,5 +1,6 @@
 package com.example.android.danmack.ui.search
 
+import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,10 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.danmack.DebouncingQueryTextListener
-import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentSearchBinding
+import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import timber.log.Timber
 
 @AndroidEntryPoint
 class SearchFragment : Fragment() {
@@ -21,37 +24,80 @@ class SearchFragment : Fragment() {
     private lateinit var ui : FragmentSearchBinding
 
     private val viewModel : SearchViewModel by viewModels()
-
     private lateinit var searchAdapter: SearchAdapter
+    private lateinit var searchResultAdapter: SearchResultAdapter
+//    private lateinit var exploreAdapter: ExploreAdapter
 
+
+    private lateinit var userSearchInput : String
+
+
+
+    @ExperimentalCoroutinesApi
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-       // return inflater.inflate(R.layout.fragment_search, container, false)
+
         ui = FragmentSearchBinding.inflate(inflater)
 
 
-        searchSongs()
+        autoSearchSongs()
+        searchSongResult()
+
         ui.lifecycleOwner = this
         ui.searchViewModel = viewModel
 
 
-      searchAdapter = SearchAdapter(SearchAdapter.SearchClickListener {
+        searchAdapter = SearchAdapter(SearchAdapter.SearchClickListener {
+            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            ui.searchView.setQuery(it.term, true)
 
-      })
+            userSearchInput = ui.searchView.query.toString()
+
+            Timber.i("Querry : $userSearchInput")
+
+
+        })
+
+        searchResultAdapter = SearchResultAdapter(SearchResultAdapter.SearchClickListener {
+
+        })
 
         val verticalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
+        val anotherVerticalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         ui.searchRecyclerView.adapter = searchAdapter
+        ui.searchResultRecyclerView.adapter = searchResultAdapter
 
         ui.searchRecyclerView.layoutManager = verticalManager
-        return ui.root
+        ui.searchResultRecyclerView.layoutManager = anotherVerticalManager
 
+
+
+
+        viewModel.autoSearchResultList.observe(viewLifecycleOwner, Observer {
+            ui.searchRecyclerView.visibility = View.VISIBLE
+            ui.searchResultRecyclerView.visibility = View.GONE
+            searchAdapter.submitList(it.hints)
+        })
+
+        viewModel.searchResultList.observe(viewLifecycleOwner, Observer {
+            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
+            Timber.i("MEEE : ${it.hits.first()}")
+            ui.searchRecyclerView.visibility = View.GONE
+            ui.searchResultRecyclerView.visibility = View.VISIBLE
+
+            // TODO : Temporary hidden the auto search rv
+            searchResultAdapter.submitList(it.hits)
+        })
+
+        return ui.root
 
     }
 
-    fun searchSongs (){
+
+
+    private fun autoSearchSongs (){
         ui.searchView.setOnQueryTextListener(
             DebouncingQueryTextListener(
                 this.lifecycle
@@ -60,13 +106,22 @@ class SearchFragment : Fragment() {
                     if (it.isEmpty()) {
                         Toast.makeText(requireContext(), "Empty", Toast.LENGTH_SHORT).show()
                     } else {
-                        viewModel.searchResult(it)
-
-                       // Toast.makeText(requireContext(), "$result", Toast.LENGTH_LONG).show()
+                        viewModel.autoCompleteSearchResult(it)
+//                        userSearchInput = it
                     }
                 }
             }
         )
     }
+
+    private fun searchSongResult () {
+        ui.searchButton.setOnClickListener {
+            Toast.makeText(requireContext(), "$userSearchInput", Toast.LENGTH_LONG).show()
+            Timber.i("UserInput: $userSearchInput")
+            viewModel.searchResult(userSearchInput)
+        }
+    }
+
+
 
 }

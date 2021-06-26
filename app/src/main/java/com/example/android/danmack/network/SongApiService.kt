@@ -7,6 +7,7 @@ import com.example.android.danmack.model.searchmodel.AutoComplete
 import com.example.android.danmack.model.searchmodel.SearchData
 import com.example.android.danmack.model.searchmodel.TermData
 import com.example.android.danmack.model.songmodel.SongData
+import kotlinx.coroutines.flow.Flow
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Query
@@ -38,7 +39,7 @@ interface SongApiService {
             @Header("x-rapidapi-host") host : String,
             @Query("term") term : String,
             @Query("locale") locale : String
-    ) : List<TermData>
+    ) : AutoComplete
 
 
     @GET("search")

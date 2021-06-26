@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+
+        <variable
+            name="searchResult"
+            type="com.example.android.danmack.model.searchmodel.SearchTrackData" />
+
+
+        <variable
+            name="clickListener"
+            type="com.example.android.danmack.ui.search.SearchResultAdapter.SearchClickListener" />
+    </data>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:onClick="@{() -> clickListener.onClick(searchResult)}"
+    >
+
+    <ImageView
+        android:id="@+id/search_result_img"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:src="@drawable/lagbaja_img"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/search_result_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_24"
+        app:layout_constraintStart_toEndOf="@+id/search_result_img"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Kiss me well" />
+
+    <TextView
+        android:id="@+id/search_result_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_8"
+        app:layout_constraintStart_toStartOf="@+id/search_result_title"
+        app:layout_constraintTop_toBottomOf="@+id/search_result_title"
+        tools:text="Kiss me small" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
