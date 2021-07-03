@@ -69,10 +69,4 @@ init {
 }
 
 
-@Suppress("UNCHECKED_CAST")
-class SongViewModelFactory (
-        private val songRepository: SongRepository
-) : ViewModelProvider.NewInstanceFactory() {
-    override fun <T : ViewModel> create(modelClass: Class<T>) =
-            (ExploreViewModel(songRepository) as T)
-}
+

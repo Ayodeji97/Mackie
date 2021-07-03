@@ -47,4 +47,18 @@ class SearchViewModel @Inject constructor
     }
 
 
+//    fun onAutoSearchCompleted () {
+//        viewModelScope.launch {
+//            _autoSearchResultList.value = null
+//        }
+//    }
+
+//    fun onSearchCompleted () {
+//
+//        viewModelScope.launch {
+//            _searchResultList.value = null
+//        }
+//    }
+
+
 }

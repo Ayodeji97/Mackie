@@ -43,7 +43,8 @@ fun List<Track>.asTrackDatabaseModel(): List<LocalTrackEntity> {
             type = track.type,
             url = track.url,
             localImages = track.images,
-                isRecommended = false
+                isRecommended = false,
+                isPlayListSelected = false
 
         )
 
@@ -51,9 +52,7 @@ fun List<Track>.asTrackDatabaseModel(): List<LocalTrackEntity> {
 }
 
 fun List<Track>.asRecommendedDatabaseModel(): List<LocalTrackEntity> {
-
     return map { track ->
-
         LocalTrackEntity(
                 key = track.key,
                 title = track.title,
@@ -61,7 +60,8 @@ fun List<Track>.asRecommendedDatabaseModel(): List<LocalTrackEntity> {
                 type = track.type,
                 url = track.url,
                 localImages = track.images,
-                isRecommended = true
+                isRecommended = true,
+                isPlayListSelected = false
 
         )
 

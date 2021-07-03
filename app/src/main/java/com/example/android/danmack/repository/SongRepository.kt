@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import com.example.android.danmack.di.IoDispatcher
 import com.example.android.danmack.local.SongDatabase
+import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.mapper.asRecommendedDatabaseModel
 import com.example.android.danmack.mapper.asTrackDatabaseModel
 import com.example.android.danmack.mapper.asTrackDomainModel
@@ -48,8 +49,18 @@ class SongRepository @Inject constructor(
                 it.asTrackDomainModel()
             }
 
-    val query = ""
+    suspend fun getTrackSelectedById (id : String) : LocalTrackEntity? {
+        return songDatabase.songDao().getTrackWithId(id)
+    }
 
+
+  // val allPlayLists : LiveData<List<LocalTrackEntity>> = songDatabase.songDao().getAllPlayListTracks()
+
+    suspend fun updatePlayList (localTrackEntity: LocalTrackEntity) {
+        songDatabase.songDao().updatePlayList(localTrackEntity)
+    }
+
+    fun getAllPlayLists () : LiveData<List<LocalTrackEntity>> = songDatabase.songDao().getAllPlayListTracks()
 
 
     suspend fun refreshTracks () {

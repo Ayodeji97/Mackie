@@ -4,24 +4,35 @@ import android.content.*
 import android.content.Context.CLIPBOARD_SERVICE
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentExploreDetailBinding
 import com.example.android.danmack.model.songmodel.Track
+import com.example.android.danmack.ui.explore.ExploreAdapter
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
-
+@AndroidEntryPoint
 class ExploreDetailFragment : Fragment() {
 
     private lateinit var ui : FragmentExploreDetailBinding
+
+    private val viewModel : ExploreDetailViewModel by viewModels()
+
+
 
     private lateinit var trackSelected : Track
 
@@ -34,6 +45,7 @@ class ExploreDetailFragment : Fragment() {
 
 
         ui.lifecycleOwner = this
+        ui.exploreDetailViewModel = viewModel
 
 
 
@@ -54,6 +66,19 @@ class ExploreDetailFragment : Fragment() {
         ui.shareImg.setOnClickListener {
             shareSongLinkIntent()
         }
+
+
+       val localTrackSelected = viewModel.getTrackSelected(trackSelected.key)
+
+        ui.bottomSheetLayoutPlaylistBtn.setOnClickListener {
+            Log.i("CCCLLICCKK", "$localTrackSelected")
+            Toast.makeText(requireContext(), "Cliccked", Toast.LENGTH_SHORT).show()
+           // viewModel.onPlayListClicked()
+        }
+
+        viewModel.idValue.observe(viewLifecycleOwner, Observer {track->
+
+        })
 
 
 

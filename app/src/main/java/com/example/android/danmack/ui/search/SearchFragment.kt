@@ -48,14 +48,11 @@ class SearchFragment : Fragment() {
         ui.lifecycleOwner = this
         ui.searchViewModel = viewModel
 
-
         searchAdapter = SearchAdapter(SearchAdapter.SearchClickListener {
             Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
             ui.searchView.setQuery(it.term, true)
 
             userSearchInput = ui.searchView.query.toString()
-
-            Timber.i("Querry : $userSearchInput")
 
 
         })
@@ -78,17 +75,14 @@ class SearchFragment : Fragment() {
         viewModel.autoSearchResultList.observe(viewLifecycleOwner, Observer {
             ui.searchRecyclerView.visibility = View.VISIBLE
             ui.searchResultRecyclerView.visibility = View.GONE
-            searchAdapter.submitList(it.hints)
+            searchAdapter.submitList(it?.hints)
         })
 
         viewModel.searchResultList.observe(viewLifecycleOwner, Observer {
-            Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
-            Timber.i("MEEE : ${it.hits.first()}")
             ui.searchRecyclerView.visibility = View.GONE
             ui.searchResultRecyclerView.visibility = View.VISIBLE
+            searchResultAdapter.submitList(it?.hits)
 
-            // TODO : Temporary hidden the auto search rv
-            searchResultAdapter.submitList(it.hits)
         })
 
         return ui.root
