@@ -19,6 +19,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentExploreDetailBinding
+import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
 import com.squareup.picasso.Picasso
@@ -73,11 +74,11 @@ class ExploreDetailFragment : Fragment() {
         ui.bottomSheetLayoutPlaylistBtn.setOnClickListener {
             Log.i("CCCLLICCKK", "$localTrackSelected")
             Toast.makeText(requireContext(), "Cliccked", Toast.LENGTH_SHORT).show()
-           // viewModel.onPlayListClicked()
+          // viewModel.onPlayListClicked()
         }
 
-        viewModel.idValue.observe(viewLifecycleOwner, Observer {track->
-
+        viewModel.idValue.observe(viewLifecycleOwner, Observer {
+            viewModel.onPlayListClicked(it)
         })
 
 

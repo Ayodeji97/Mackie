@@ -37,5 +37,8 @@
         <argument
             android:name="track"
             app:argType="com.example.android.danmack.model.songmodel.Track" />
+<!--        <argument-->
+<!--            android:name="trackEntity"-->
+<!--            app:argType="com.example.android.danmack.local.localmodel.LocalTrackEntity" />-->
     </fragment>
 </navigation>

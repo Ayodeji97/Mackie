@@ -43,6 +43,8 @@ class PlaylistFragment : Fragment() {
 
         })
 
+
+
         viewModel.playlists.observe(viewLifecycleOwner, Observer {
 
             //exploreAdapter.submitList(it as List<Track>)

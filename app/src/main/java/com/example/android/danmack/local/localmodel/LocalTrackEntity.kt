@@ -18,5 +18,5 @@ data class LocalTrackEntity (
         val url: String,
         @Embedded val localImages: ImagesX,
         val isRecommended : Boolean,
-        val isPlayListSelected : Boolean
+        var isPlayListSelected : Boolean
 ) : Parcelable
