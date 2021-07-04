@@ -69,17 +69,16 @@ class ExploreDetailFragment : Fragment() {
         }
 
 
-       val localTrackSelected = viewModel.getTrackSelected(trackSelected.key)
+
+
+       viewModel.getTrackSelected(trackSelected.key)
 
         ui.bottomSheetLayoutPlaylistBtn.setOnClickListener {
-            Log.i("CCCLLICCKK", "$localTrackSelected")
             Toast.makeText(requireContext(), "Cliccked", Toast.LENGTH_SHORT).show()
-          // viewModel.onPlayListClicked()
+            viewModel.idValue.observe(viewLifecycleOwner, Observer {
+                viewModel.onPlayListClicked(it)
+            })
         }
-
-        viewModel.idValue.observe(viewLifecycleOwner, Observer {
-            viewModel.onPlayListClicked(it)
-        })
 
 
 

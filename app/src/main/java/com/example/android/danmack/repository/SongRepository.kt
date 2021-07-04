@@ -49,18 +49,20 @@ class SongRepository @Inject constructor(
                 it.asTrackDomainModel()
             }
 
-    suspend fun getTrackSelectedById (id : String) : LocalTrackEntity? {
+   suspend fun getTrackSelectedById (id : String) : LocalTrackEntity? {
         return songDatabase.songDao().getTrackWithId(id)
     }
 
 
-  // val allPlayLists : LiveData<List<LocalTrackEntity>> = songDatabase.songDao().getAllPlayListTracks()
+  val allPlayLists : LiveData<List<Track>> = Transformations.map(songDatabase.songDao().getAllPlayListTracks()) {
+      it.asTrackDomainModel()
+  }
 
     suspend fun updatePlayList (localTrackEntity: LocalTrackEntity) {
         songDatabase.songDao().updatePlayList(localTrackEntity)
     }
 
-    fun getAllPlayLists () : LiveData<List<LocalTrackEntity>> = songDatabase.songDao().getAllPlayListTracks()
+    //fun getAllPlayLists () : LiveData<List<LocalTrackEntity>> = songDatabase.songDao().getAllPlayListTracks()
 
 
     suspend fun refreshTracks () {

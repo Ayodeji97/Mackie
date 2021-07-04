@@ -10,6 +10,9 @@
 <!--            name="playListViewModel"-->
 <!--            type="com.example.android.danmack.ui.exploredetail.ExploreDetailViewModel" />-->
 
+        <variable
+            name="exploreDetailViewModel"
+            type="com.example.android.danmack.ui.exploredetail.ExploreDetailViewModel" />
 
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
