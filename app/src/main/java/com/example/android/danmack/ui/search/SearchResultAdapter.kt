@@ -5,6 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
+import com.bumptech.glide.request.RequestOptions
 import com.example.android.danmack.databinding.SearchListItemBinding
 import com.example.android.danmack.databinding.SearchResultListItemBinding
 import com.example.android.danmack.model.searchmodel.SearchTrackData
@@ -23,6 +26,12 @@ class SearchResultAdapter (val clickListener : SearchClickListener) : ListAdapte
             ui.searchResult = item
             ui.searchResultTitle.text = item.track.title
             ui.searchResultDescription.text = item.track.subtitle
+            Glide.with(itemView)
+                    .load(item.track.images.coverart)
+                    .apply(RequestOptions.centerCropTransform())
+                    .transition(DrawableTransitionOptions.withCrossFade())
+                    .into(ui.searchResultImg)
+
             ui.clickListener = clickListener
             ui.executePendingBindings()
         }

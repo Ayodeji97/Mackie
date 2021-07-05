@@ -15,6 +15,8 @@ import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
 import com.example.android.danmack.ui.exploredetail.ExploreDetailViewModel
+import com.example.android.danmack.utils.setDisplayHomeAsUpEnabled
+import com.example.android.danmack.utils.setTitle
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
@@ -35,6 +37,9 @@ class PlaylistFragment : Fragment() {
     ): View? {
 
         ui = FragmentPlaylistBinding.inflate(inflater)
+
+//        setDisplayHomeAsUpEnabled(false)
+//        setTitle("Playlist")
 
       //ui.playListViewModel = viewModel
         ui.lifecycleOwner = this

@@ -40,13 +40,16 @@
     </style>
 
     <style name="CustomiseBody1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/textSize_14</item>
 
     </style>
 
     <style name="CustomiseBody2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/secondary_color</item>
+        <item name="android:textColor">@color/primary_color</item>
         <item name="fontFamily">@font/montserrat</item>
-        <item name="android:textSize">@dimen/textSize_14</item>
+        <item name="android:textSize">@dimen/textSize_10</item>
     </style>
     
     <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
