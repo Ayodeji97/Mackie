@@ -11,8 +11,7 @@
     <string name="detail_str">Song Details</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
-
-
+    <string name="login_str">Login</string>
 
     <string name="content">With the idea of imparting programming
       knowledge, Mr. Sandeep Jain, an IIT Roorkee alumnus started a
@@ -29,4 +28,5 @@
       and landed jobs at tech giants. Our vision is to build a gigantic network of
       geeks and we are only a fraction of it yet.
   </string>
+    <string name="sign_up_str">Sign up</string>
 </resources>

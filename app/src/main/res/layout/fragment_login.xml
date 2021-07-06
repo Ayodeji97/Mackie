@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--    tools:context=".ui.auth.LoginFragment"-->
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!--    Nested scroll view to enable views visible for all screen sizes -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <!-- Constraint layout to prefer to avoid nested view for app optimisation -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/primary_color"
+            tools:context=".ui.auth.LoginFragment">
+
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="40dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="@dimen/margin_24"
+                android:layout_marginTop="104dp"
+                android:background="@color/white"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragment_login_heading_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="This is great"
+                android:textAppearance="?textAppearanceHeadline6"
+                android:layout_marginStart="@dimen/margin_16"
+                android:textColor="@color/white"
+                app:layout_constraintBottom_toBottomOf="@+id/view"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toTopOf="@+id/view" />
+
+            <TextView
+                android:id="@+id/fragment_login_"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Login"
+                android:textAppearance="?textAppearanceHeadline5"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_login_heading_tv" />
+
+            <View
+                android:id="@+id/view_long"
+                android:layout_width="120dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="24dp"
+                android:background="@color/white"
+                app:layout_constraintStart_toEndOf="@+id/view"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_login_" />
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_login_email_tl"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="email"
+                app:boxStrokeColor="@color/primary_color"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_24"
+                app:hintTextColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/fragment_login_"
+                app:layout_constraintTop_toBottomOf="@+id/view_long">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_login_email_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="textEmailAddress"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/fragment_login_password_tl"
+                style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:hint="password"
+                android:layout_marginTop="@dimen/margin_24"
+                android:layout_marginEnd="@dimen/margin_24"
+                app:boxStrokeColor="@color/primary_color"
+                app:hintTextColor="@color/black"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/fragment_login_email_tl"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_login_email_tl">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/fragment_login_password_et"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:filterTouchesWhenObscured="true"
+                    android:inputType="numberPassword"
+                    android:textColor="@color/black"
+                    android:textSize="12sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/login_btn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="35dp"
+                android:layout_marginEnd="35dp"
+                android:layout_marginBottom="30dp"
+                android:backgroundTint="@color/black_500"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:text="@string/login_str"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                android:textStyle="normal"
+                app:cornerRadius="@dimen/margin_16"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_login_password_tl" />
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

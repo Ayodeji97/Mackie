@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1081307196888",
+    "project_id": "danmack-638fb",
+    "storage_bucket": "danmack-638fb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1081307196888:android:67774c261b7e880990d6ad",
+        "android_client_info": {
+          "package_name": "com.example.android.danmack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1081307196888-8l6oe4tkble4t63ui89s9lm85ivi4u2v.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.android.danmack",
+            "certificate_hash": "019ccb57b5fd41131f7d154bf1a12b9332faff1f"
+          }
+        },
+        {
+          "client_id": "1081307196888-bks489jfl75bam67kq4i0747naumjupp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZUyjxAkNWhaqSfu8DjEF3F5HkIGEGxck"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1081307196888-bks489jfl75bam67kq4i0747naumjupp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
