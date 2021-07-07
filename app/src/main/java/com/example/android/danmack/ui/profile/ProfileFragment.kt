@@ -19,14 +19,17 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentResultListener
 import com.example.android.danmack.databinding.FragmentProfileBinding
+import com.example.android.danmack.utils.Constants
 import com.example.android.danmack.utils.ProfileDialog
 import com.example.android.danmack.utils.ProfileDialog.Companion.REQUEST_IMAGE_CAPTURE
+import com.example.android.danmack.utils.SessionManager
 
 class ProfileFragment : Fragment() {
 
     private lateinit var ui : FragmentProfileBinding
     private var photo_permission_string : String = ""
     private var gallery_permission_string : String = ""
+    private lateinit var userEmail : String
 
     private val PICK_IMAGE = 100
 
@@ -41,11 +44,6 @@ class ProfileFragment : Fragment() {
 
         ui = FragmentProfileBinding.inflate(inflater)
 
-
-        val profileDialog = ProfileDialog()
-
-      // checkPermissionToRequest()
-
         ui.profileFragmentChangePhoto.setOnClickListener {
           ProfileDialog().show(
                   childFragmentManager, ProfileDialog.TAG
@@ -57,6 +55,12 @@ class ProfileFragment : Fragment() {
         receiveUserResponseAndOpenCamera()
 
         receiveUserResponseAndChooseImageToUpload()
+
+
+       userEmail = SessionManager.load(requireContext(), Constants.USEREMAIL)
+
+
+        ui.profileFragmentEmailTv.text = userEmail
 
 
         return ui.root
@@ -72,12 +76,12 @@ class ProfileFragment : Fragment() {
 
             photo_permission_string = bundle.getString("bundle_key").toString()
 
-            Log.i("SEEEEE", "$photo_permission_string")
-
             if (photo_permission_string == "ask_photo_permission") {
 
                 checkAndRequestCameraPermission()
 
+            } else {
+                Toast.makeText(requireContext(), "Please pick image", Toast.LENGTH_SHORT).show()
             }
 
 
@@ -95,10 +99,9 @@ class ProfileFragment : Fragment() {
             gallery_permission_string = bundle.getString("gallery_bundle_key").toString()
 
             if (gallery_permission_string == "choose_photo_permission") {
-
-                Toast.makeText(requireContext(), "$gallery_permission_string", Toast.LENGTH_SHORT).show()
-
                 checkAndRequestWriteExternalStoragePermission()
+            } else {
+                Toast.makeText(requireContext(), "Please pick image", Toast.LENGTH_SHORT).show()
             }
 
         })
@@ -134,18 +137,9 @@ class ProfileFragment : Fragment() {
         }
     }
 
-    private fun dispatchTakePictureIntent() {
-        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-        try {
-            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
-        } catch (e: ActivityNotFoundException) {
-            // display error state to the user
-        }
-    }
 
 
     private val requestPhotoPermissionLauncher = registerForActivityResult(ActivityResultContracts.RequestPermission()) {
-
         if (it) {
             dispatchTakePictureIntent()
         } else {
@@ -165,10 +159,18 @@ class ProfileFragment : Fragment() {
     }
 
 
+    private fun dispatchTakePictureIntent() {
+        val takePictureIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+        try {
+            startActivityForResult(takePictureIntent, REQUEST_IMAGE_CAPTURE)
+        } catch (e: ActivityNotFoundException) {
+            // display error state to the user
+        }
+    }
+
     private fun chooseImageFromGallery () {
         val chooseImageIntent = Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
         startActivityForResult(chooseImageIntent, PICK_IMAGE)
-
 
     }
 
@@ -176,6 +178,7 @@ class ProfileFragment : Fragment() {
     private fun photoLaunchPermission () {
         requestPhotoPermissionLauncher.launch(Manifest.permission.CAMERA)
     }
+
 
     private fun chooseImageLaunchPermission () {
         requestGalleryPermissionLauncher.launch(Manifest.permission.WRITE_EXTERNAL_STORAGE)

@@ -2,10 +2,10 @@
     <string name="app_name">DanMack</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="explore_str">Explore</string>
+<!--    <string name="explore_str">Explore</string>-->
     <string name="recommendation_str">Recommendation</string>
     <string name="favourite_str">Favourite</string>
-    <string name="playlist_str">Playlist</string>
+<!--    <string name="playlist_str">Playlist</string>-->
     <string name="share_link_str">Share Link</string>
     <string name="copy_link_str">Copy Link</string>
     <string name="detail_str">Song Details</string>
@@ -32,4 +32,8 @@
       geeks and we are only a fraction of it yet.
   </string>
     <string name="sign_up_str">Sign up</string>
+    <string name="search_str">Search</string>
+    <string name="playlist_str">Playlist</string>
+    <string name="explore_str">Explore</string>
+    <string name="profile_str">Profile</string>
 </resources>

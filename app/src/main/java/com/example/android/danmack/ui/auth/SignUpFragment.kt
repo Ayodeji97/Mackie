@@ -1,7 +1,6 @@
 package com.example.android.danmack.ui.auth
 
 import android.os.Bundle
-import android.util.Log
 import android.util.Patterns
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentSignUpBinding
-import com.google.android.gms.tasks.OnCompleteListener
+import com.example.android.danmack.utils.Constants
+import com.example.android.danmack.utils.SessionManager
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -20,6 +20,9 @@ class SignUpFragment : Fragment() {
     private lateinit var ui : FragmentSignUpBinding
 
     private lateinit var auth: FirebaseAuth
+
+    private lateinit var userEmail : String
+    private lateinit var userPassword : String
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -35,30 +38,31 @@ class SignUpFragment : Fragment() {
 
         ui.registerBtn.setOnClickListener {
 
-            val email = ui.fragmentRegisterEmailEt.text.toString().trim()
-            val password = ui.fragmentRegisterPasswordEt.text.toString().trim()
+            userEmail = ui.fragmentRegisterEmailEt.text.toString().trim()
+            userPassword = ui.fragmentRegisterPasswordEt.text.toString().trim()
 
-            if (email.isEmpty()) {
+            if (userEmail.isEmpty()) {
                 ui.fragmentRegisterRegisterTl.error = "Email Required"
                 ui.fragmentRegisterRegisterTl.requestFocus()
                 return@setOnClickListener
             }
 
 
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
                 ui.fragmentRegisterRegisterTl.error = "Valid Email Required"
                 ui.fragmentRegisterRegisterTl.requestFocus()
                 return@setOnClickListener
             }
 
 
-            if (password.isEmpty() || password.length < 6) {
+            if (userPassword.isEmpty() || userPassword.length < 6) {
                 ui.fragmentRegisterPasswordTl.error = "6 char password required"
                 ui.fragmentRegisterPasswordTl.requestFocus()
                 return@setOnClickListener
             }
 
-            registerUser(email, password)
+            SessionManager.save(requireContext(), Constants.USEREMAIL, userEmail)
+            registerUser(userEmail, userPassword)
         }
 
         return ui.root

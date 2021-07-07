@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentLoginBinding
+import com.example.android.danmack.utils.Constants.USEREMAIL
+import com.example.android.danmack.utils.SessionManager
 import com.google.firebase.auth.FirebaseAuth
 
 
@@ -17,6 +19,8 @@ class LoginFragment : Fragment() {
 
     private lateinit var ui : FragmentLoginBinding
     private lateinit var auth: FirebaseAuth
+    private lateinit var userEmail : String
+    private lateinit var userPassword : String
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -30,29 +34,30 @@ class LoginFragment : Fragment() {
 
         ui.loginBtn.setOnClickListener {
 
-            val email = ui.fragmentLoginEmailEt.text.toString().trim()
-            val password = ui.fragmentLoginPasswordEt.text.toString().trim()
+            userEmail = ui.fragmentLoginEmailEt.text.toString().trim()
+            userPassword = ui.fragmentLoginPasswordEt.text.toString().trim()
 
-            if (email.isEmpty()) {
+            if (userEmail.isEmpty()) {
                 ui.fragmentLoginEmailTl.error = "Email Required"
                 ui.fragmentLoginEmailTl.requestFocus()
                 return@setOnClickListener
             }
 
-            if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            if (!Patterns.EMAIL_ADDRESS.matcher(userEmail).matches()) {
                 ui.fragmentLoginEmailTl.error = "Valid Email Required"
                 ui.fragmentLoginEmailTl.requestFocus()
                 return@setOnClickListener
             }
 
 
-            if (password.isEmpty() || password.length < 6) {
+            if (userPassword.isEmpty() || userPassword.length < 6) {
                 ui.fragmentLoginPasswordTl.error = "6 char password required"
                 ui.fragmentLoginPasswordTl.requestFocus()
                 return@setOnClickListener
             }
 
-            loginUser(email, password)
+            SessionManager.save(requireContext(), USEREMAIL, userEmail)
+            loginUser(userEmail, userPassword)
         }
 
         return ui.root

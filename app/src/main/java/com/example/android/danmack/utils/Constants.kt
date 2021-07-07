@@ -11,4 +11,6 @@ object Constants {
     const val BASE_URL = "https://shazam.p.rapidapi.com"
     //const val BASE_URL = "https://genius.p.rapidapi.com/"
    // const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+    const val SHARED_PREFS: String = "sharedPrefs"
+    const val USEREMAIL : String = "userEmail"
 }
