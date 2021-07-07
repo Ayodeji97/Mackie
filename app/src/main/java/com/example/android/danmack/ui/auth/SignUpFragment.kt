@@ -1,5 +1,6 @@
 package com.example.android.danmack.ui.auth
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -8,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.navigation.fragment.findNavController
+import com.example.android.danmack.MainActivity
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentSignUpBinding
 import com.example.android.danmack.utils.Constants
@@ -35,6 +37,7 @@ class SignUpFragment : Fragment() {
 
         auth = FirebaseAuth.getInstance()
 
+        gotoLoginScreen()
 
         ui.registerBtn.setOnClickListener {
 
@@ -87,8 +90,18 @@ class SignUpFragment : Fragment() {
 
     }
 
+
+
+
+
     private fun login () {
         findNavController().navigate(R.id.exploreFragment)
+    }
+
+    private fun gotoLoginScreen() {
+       ui.alreadyRegisterTv.setOnClickListener {
+           findNavController().navigate(R.id.loginFragment)
+       }
     }
 
     override fun onStart() {

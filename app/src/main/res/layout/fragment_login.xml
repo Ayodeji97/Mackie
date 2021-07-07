@@ -135,6 +135,18 @@
                 app:layout_constraintTop_toBottomOf="@+id/fragment_login_password_tl" />
 
 
+            <TextView
+                android:id="@+id/do_not_have_account_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Do not have account yet? Sign up"
+                android:layout_marginTop="@dimen/margin_16"
+                android:textAppearance="?textAppearanceHeadline6"
+                app:layout_constraintEnd_toEndOf="@+id/login_btn"
+                app:layout_constraintStart_toStartOf="@+id/login_btn"
+                app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
