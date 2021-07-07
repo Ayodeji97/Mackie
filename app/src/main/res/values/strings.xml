@@ -12,6 +12,9 @@
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
     <string name="login_str">Login</string>
+    <string name="cancel">Cancel</string>
+
+    <string name="choose_photo_title">Choose Profile Photo</string>
 
     <string name="content">With the idea of imparting programming
       knowledge, Mr. Sandeep Jain, an IIT Roorkee alumnus started a

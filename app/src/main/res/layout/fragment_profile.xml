@@ -1,129 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.profile.ProfileFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/primary_color"
+        tools:context=".ui.profile.ProfileFragment">
 
-        <RelativeLayout
-            android:id="@+id/layoutHead"
-            android:background="#5CC09F"
+
+        <TextView
+            android:id="@+id/fragment_explore_heading_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24"
+            android:layout_marginTop="@dimen/textSize_32"
+            android:text="Profile"
+            android:textAppearance="?textAppearanceHeadline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/celebrityImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/lagbaja_img"
+            app:civ_border_color="@color/secondary_color"
+            app:civ_border_width="0.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_explore_heading_tv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_fragment_change_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:textAllCaps="false"
+            android:text="change photo"
+            app:elevation="@dimen/margin_8"
+            app:cornerRadius="@dimen/margin_8"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/textSize_10"
+            android:backgroundTint="@color/black_500"
+            app:layout_constraintEnd_toEndOf="@+id/celebrityImage"
+            app:layout_constraintStart_toStartOf="@+id/celebrityImage"
+            app:layout_constraintTop_toBottomOf="@+id/celebrityImage" />
+
+
+        <TextView
+            android:id="@+id/profile_fragment_email_tv"
+            style="@style/TextAppearance.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="danny@gmail.com"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_fragment_change_photo" />
+
+
+        <View
+            android:id="@+id/horizontal_line"
             android:layout_width="match_parent"
-            android:layout_height="200dp">
-
-            <ImageView
-                android:id="@+id/image_view"
-                android:background="@drawable/ic_launcher_foreground"
-                android:layout_centerInParent="true"
-                android:layout_width="90dp"
-                android:layout_height="90dp"/>
-
-            <EditText
-                android:hint="Enter Name"
-                android:textAlignment="center"
-                android:layout_marginTop="5dp"
-                android:textColor="@android:color/white"
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_centerHorizontal="true"
-                android:layout_below="@id/image_view"
-                tools:text="Belal Khan"
-                android:enabled="true"
-                android:id="@+id/edit_text_name"
-                android:layout_width="200dp"
-                android:layout_height="wrap_content"/>
-
-            <ProgressBar
-                android:visibility="invisible"
-                android:id="@+id/progressbar_pic"
-                android:layout_centerInParent="true"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_marginTop="10dp"
-            android:padding="16dp"
-            android:layout_centerHorizontal="true"
-            android:orientation="vertical"
-            android:layout_below="@id/layoutHead"
-            android:layout_width="360dp"
-            android:layout_height="match_parent">
-
-            <TextView
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_gravity="top"
-                android:drawablePadding="16dp"
-                tools:text="probelalkhan@gmail.com"
-                android:id="@+id/text_email"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:id="@+id/text_not_verified"
-                android:visibility="invisible"
-                android:textColor="@android:color/holo_red_dark"
-                android:layout_gravity="right"
-                android:layout_marginBottom="9dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                android:text="Not Verified (Click to Verify)"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+            android:layout_height="0.5dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/secondary_color"
+            android:background="@color/secondary_color"
+            android:layout_marginStart="@dimen/margin_18"
+            android:layout_marginEnd="@dimen/margin_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_fragment_email_tv" />
 
 
-            <TextView
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_gravity="top"
-                android:drawablePadding="16dp"
-
-                tools:text="+917549161079"
-                android:enabled="true"
-                android:id="@+id/text_phone"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="20dp"
-                android:layout_height="wrap_content"/>
-
-            <TextView
-                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                android:layout_gravity="top"
-                android:drawablePadding="16dp"
-                android:text="Change Password"
-                android:enabled="true"
-                android:id="@+id/text_password"
-                android:layout_width="match_parent"
-                android:layout_marginBottom="20dp"
-                android:layout_height="wrap_content"/>
-
-
-            <ProgressBar
-                android:id="@+id/progressbar"
-                android:visibility="invisible"
-                android:layout_margin="10dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-
-            <Button
-                android:id="@+id/button_save"
-                android:layout_marginTop="15dp"
-                android:textColor="@android:color/white"
-                android:background="?colorPrimary"
-                android:textAllCaps="false"
-                android:layout_gravity="center_horizontal"
-                android:text="Save Changes"
-                android:layout_width="140dp"
-                android:layout_height="wrap_content"/>
-
-        </LinearLayout>
-
-    </RelativeLayout>
-
-</FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>
