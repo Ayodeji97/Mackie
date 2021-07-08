@@ -1,5 +1,9 @@
 package com.example.android.danmack.di
 
+import android.app.Application
+import android.content.Context
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import com.example.android.danmack.network.SongApiService
 import com.example.android.danmack.utils.Constants.BASE_URL
 import com.google.gson.Gson
@@ -9,6 +13,7 @@ import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
 import okhttp3.OkHttpClient
@@ -78,6 +83,11 @@ object NetworkModule {
                 .create(SongApiService::class.java)
 
         }
+
+
+    @Singleton
+    @Provides
+    fun provideContext (application: Application) : Context = application.applicationContext
 
     }
 

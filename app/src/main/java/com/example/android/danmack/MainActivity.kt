@@ -1,8 +1,12 @@
 package com.example.android.danmack
 
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
@@ -46,6 +50,8 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+
 
 
 

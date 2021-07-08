@@ -16,7 +16,9 @@ import com.example.android.danmack.utils.Constants
 import com.example.android.danmack.utils.SessionManager
 import com.google.firebase.auth.FirebaseAuth
 
-
+/**
+ * Simple sign up screen to authenticate the user
+ * */
 class SignUpFragment : Fragment() {
 
     private lateinit var ui : FragmentSignUpBinding

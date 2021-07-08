@@ -1,5 +1,8 @@
 package com.example.android.danmack.repository
 
+import android.content.Context
+import android.content.pm.ApplicationInfo
+import android.content.pm.PackageManager
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
@@ -14,7 +17,13 @@ import com.example.android.danmack.model.searchmodel.SearchData
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.network.SongApiService
 import com.example.android.danmack.utils.Constants.API_HOST
-import com.example.android.danmack.utils.Constants.API_KEY
+import com.example.android.danmack.utils.Constants.id
+import com.example.android.danmack.utils.Constants.limit
+import com.example.android.danmack.utils.Constants.locale
+import com.example.android.danmack.utils.Constants.offset
+import com.example.android.danmack.utils.Constants.recommendedId
+import com.google.android.gms.common.wrappers.Wrappers.packageManager
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.withContext
 import timber.log.Timber
@@ -23,41 +32,58 @@ import javax.inject.Singleton
 
 @Singleton
 class SongRepository @Inject constructor(
-       private val songDatabase: SongDatabase,
-       private val songApiService: SongApiService,
-        @IoDispatcher private val ioDispatcher: CoroutineDispatcher) {
+    private val songDatabase: SongDatabase,
+    private val songApiService: SongApiService,
+    @ApplicationContext private val context: Context,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher) {
 
     /**
-     * Directly from the api
+     * Get Api key
      * */
-
-    val id = "40008598"
-    val locale = "en-US"
-    val recommendedId = "484129036"
-    val offset = "0"
-    val limit = "5"
+    private val ai : ApplicationInfo = context.packageManager
+        .getApplicationInfo(context.packageName, PackageManager.GET_META_DATA)
+   private val value = ai.metaData["keyValue"]
+    val key = value.toString()
 
 
+    /**
+     * Top trend song list
+     * */
     val allTopTrends : LiveData<List<Track>> =
            Transformations.map(songDatabase.songDao().getAllTracks()) {
                it.asTrackDomainModel()
            }
 
 
+    /**
+     * Recommendation song list
+     * */
     val allRecommendations : LiveData<List<Track>> =
             Transformations.map(songDatabase.songDao().getRecommendedTracks()) {
                 it.asTrackDomainModel()
             }
 
+
+    /**
+     * get tract selected by Id
+     * */
    suspend fun getTrackSelectedById (id : String) : LocalTrackEntity? {
         return songDatabase.songDao().getTrackWithId(id)
     }
 
 
+
+    /**
+     * playlist song
+     * */
   val allPlayLists : LiveData<List<Track>> = Transformations.map(songDatabase.songDao().getAllPlayListTracks()) {
       it.asTrackDomainModel()
   }
 
+
+    /**
+     * Update playlist song list
+     * */
     suspend fun updatePlayList (localTrackEntity: LocalTrackEntity) {
         songDatabase.songDao().updatePlayList(localTrackEntity)
     }
@@ -65,13 +91,14 @@ class SongRepository @Inject constructor(
     //fun getAllPlayLists () : LiveData<List<LocalTrackEntity>> = songDatabase.songDao().getAllPlayListTracks()
 
 
+    /**
+     * refresh track song list
+     * */
     suspend fun refreshTracks () {
         withContext(ioDispatcher) {
             try {
 
-              val tracks = songApiService.getAllTopTrendSongs(API_KEY, API_HOST, id, locale)
-
-                Log.i("SEEEE", "$tracks")
+              val tracks = songApiService.getAllTopTrendSongs(key, API_HOST, id, locale)
 
                 songDatabase.songDao().insertAllTracks(*tracks.tracks.asTrackDatabaseModel().toTypedArray())
 
@@ -84,10 +111,13 @@ class SongRepository @Inject constructor(
 
 
 
+    /**
+     * refresh recommended song list
+     * */
     suspend fun refreshRecommendations () {
         withContext(ioDispatcher) {
             try {
-                val recommendations = songApiService.getAllRecommendations(API_KEY, API_HOST, recommendedId, locale)
+                val recommendations = songApiService.getAllRecommendations(key, API_HOST, recommendedId, locale)
                 songDatabase.songDao().insertAllTracks(*recommendations.tracks.asRecommendedDatabaseModel().toTypedArray())
 
             } catch (e : Exception) {
@@ -97,13 +127,20 @@ class SongRepository @Inject constructor(
     }
 
 
+
+    /**
+     * auto complete list
+     * */
     suspend fun autoCompleteSearchSongs(query: String): AutoComplete {
-        return songApiService.autoCompleteSearchSongs(API_KEY, API_HOST, query, locale)
+        return songApiService.autoCompleteSearchSongs(key, API_HOST, query, locale)
     }
 
 
+    /**
+     * Search song
+     * */
     suspend fun searchSongs(query: String) : SearchData {
-            return  songApiService.searchSongs(API_KEY, API_HOST, query, locale, offset, limit)
+            return  songApiService.searchSongs(key, API_HOST, query, locale, offset, limit)
     }
 
 

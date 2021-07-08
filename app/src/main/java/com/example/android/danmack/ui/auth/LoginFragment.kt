@@ -17,6 +17,9 @@ import com.example.android.danmack.utils.SessionManager
 import com.google.firebase.auth.FirebaseAuth
 
 
+/**
+ * Simple login screen to authenticate the user
+ * */
 class LoginFragment : Fragment() {
 
     private lateinit var ui : FragmentLoginBinding

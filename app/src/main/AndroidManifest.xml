@@ -31,6 +31,10 @@ Android 10 or higher. -->
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="keyValue"
+            android:value="${KEY}"/>
     </application>
 
 </manifest>
