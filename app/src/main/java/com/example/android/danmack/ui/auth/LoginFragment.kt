@@ -85,7 +85,7 @@ class LoginFragment : Fragment() {
 
     private fun gotoSignUpScreen() {
        ui.doNotHaveAccountTv.setOnClickListener {
-           findNavController().navigate(R.id.signUpFragment)
+           findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSignUpFragment())
        }
     }
 

@@ -80,6 +80,23 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_fragment_email_tv" />
 
 
+<!--        <com.google.android.material.button.MaterialButton-->
+<!--            android:id="@+id/cancel_button"-->
+<!--            android:layout_width="0dp"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginStart="@dimen/margin_24"-->
+<!--            android:layout_marginTop="32dp"-->
+<!--            android:layout_marginEnd="@dimen/margin_24"-->
+<!--            android:backgroundTint="@color/black_500"-->
+<!--            android:text="@string/cancel_str"-->
+<!--            android:textAppearance="@style/CustomiseBody1"-->
+<!--            app:cornerRadius="@dimen/margin_8"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintHorizontal_bias="0.0"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/horizontal_line" />-->
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

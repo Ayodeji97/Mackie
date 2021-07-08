@@ -73,10 +73,11 @@ class SignUpFragment : Fragment() {
 
 
     private fun registerUser(email: String, password: String) {
-        //progressbar.visibility = View.VISIBLE
+        ui.progressBar.visibility = View.VISIBLE
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener {
-            if (it.isSuccessful) {
 
+            if (it.isSuccessful) {
+                ui.progressBar.visibility = View.GONE
                 login()
 
             } else {

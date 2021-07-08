@@ -52,6 +52,7 @@ class ProfileFragment : Fragment() {
 
 
 
+
         receiveUserResponseAndOpenCamera()
 
         receiveUserResponseAndChooseImageToUpload()
