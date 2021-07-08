@@ -17,11 +17,13 @@ import androidx.lifecycle.Observer
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.danmack.MainActivity
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentExploreDetailBinding
 import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
+import com.example.android.danmack.utils.playSongInBrowser
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -61,7 +63,7 @@ class ExploreDetailFragment : Fragment() {
         }
 
         ui.bottomSheetLayoutPlayBtn.setOnClickListener {
-            playSongInBrowser()
+            playSongInBrowser(url)
         }
 
         ui.shareImg.setOnClickListener {
@@ -69,17 +71,16 @@ class ExploreDetailFragment : Fragment() {
         }
 
 
-       val localTrackSelected = viewModel.getTrackSelected(trackSelected.key)
+
+
+       viewModel.getTrackSelected(trackSelected.key)
 
         ui.bottomSheetLayoutPlaylistBtn.setOnClickListener {
-            Log.i("CCCLLICCKK", "$localTrackSelected")
             Toast.makeText(requireContext(), "Cliccked", Toast.LENGTH_SHORT).show()
-          // viewModel.onPlayListClicked()
+            viewModel.idValue.observe(viewLifecycleOwner, Observer {
+                viewModel.onPlayListClicked(it)
+            })
         }
-
-        viewModel.idValue.observe(viewLifecycleOwner, Observer {
-            viewModel.onPlayListClicked(it)
-        })
 
 
 
@@ -93,16 +94,6 @@ class ExploreDetailFragment : Fragment() {
         return ui.root
     }
 
-    private fun playSongInBrowser () {
-
-        val songUri = trackSelected.url
-
-        val defaultBrowser = Intent.makeMainSelectorActivity(Intent.ACTION_MAIN, Intent.CATEGORY_APP_BROWSER)
-
-        defaultBrowser.data = Uri.parse(songUri)
-
-        startActivity(defaultBrowser)
-    }
 
 
     // share referral link with friends
@@ -125,6 +116,18 @@ class ExploreDetailFragment : Fragment() {
         }
 
     }
+
+
+//
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        (activity as MainActivity).hideBottomNavigation()
+//    }
+//
+//    override fun onDetach() {
+//        super.onDetach()
+//        (activity as MainActivity).showBottomNavigation()
+//    }
 
 
 

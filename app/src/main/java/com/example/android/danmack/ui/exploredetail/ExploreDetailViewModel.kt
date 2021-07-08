@@ -22,7 +22,9 @@ class ExploreDetailViewModel @Inject constructor
 
     // TODO : when playlist is clicked, song should get saved to playlist fragment
 
-    val playlists = songRepository.getAllPlayLists()
+   // val playlists = songRepository.getAllPlayLists()
+
+    val playLists = songRepository.allPlayLists
 
     private val _idValue = MutableLiveData<LocalTrackEntity>()
 
@@ -37,17 +39,15 @@ class ExploreDetailViewModel @Inject constructor
 
     fun onPlayListClicked (localTrackEntity: LocalTrackEntity) {
         val currentPlayList = localTrackEntity.isPlayListSelected
-        Log.d("UPDATE", currentPlayList.toString())
-        println("UPDATE, $currentPlayList")
         val updatedPlayList = localTrackEntity.copy(isPlayListSelected = !currentPlayList)
         viewModelScope.launch {
             songRepository.updatePlayList(updatedPlayList)
         }
     }
 
-    fun getTrackSelected (id : String)   {
+    fun getTrackSelected (id : String){
         viewModelScope.launch {
-            _idValue.value = songRepository.getTrackSelectedById(id)!!
+           _idValue.value =  songRepository.getTrackSelectedById(id)!!
         }
 
     }

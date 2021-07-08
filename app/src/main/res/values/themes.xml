@@ -40,13 +40,16 @@
     </style>
 
     <style name="CustomiseBody1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="android:textColor">@color/primary_color</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/textSize_14</item>
 
     </style>
 
     <style name="CustomiseBody2" parent="TextAppearance.MaterialComponents.Body2">
-        <item name="android:textColor">@color/secondary_color</item>
+        <item name="android:textColor">@color/primary_color</item>
         <item name="fontFamily">@font/montserrat</item>
-        <item name="android:textSize">@dimen/textSize_14</item>
+        <item name="android:textSize">@dimen/textSize_10</item>
     </style>
     
     <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
@@ -57,10 +60,11 @@
         <item name="android:background"> @color/primary_color </item>
     </style>
 
-    <!--    <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline6">-->
-<!--        <item name="android:textSize">24sp</item>-->
-<!--        <item name="android:textColor">@color/primary_color</item>-->
-<!--    </style>-->
+        <style name="TextAppearance.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textSize">18sp</item>
+            <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textColor">@color/secondary_color</item>
+    </style>
 
 <!--    <style name="TextAppearance.Subtitle" parent="TextAppearance.Title" >-->
 <!--        <item name="android:textSize">18sp</item>-->

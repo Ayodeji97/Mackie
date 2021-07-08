@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/primary_color"
+        tools:context=".ui.profile.ProfileFragment">
+
+
+        <TextView
+            android:id="@+id/fragment_explore_heading_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_24"
+            android:layout_marginTop="@dimen/textSize_32"
+            android:text="Profile"
+            android:textAppearance="?textAppearanceHeadline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/celebrityImage"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/lagbaja_img"
+            app:civ_border_color="@color/secondary_color"
+            app:civ_border_width="0.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_explore_heading_tv" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/profile_fragment_change_photo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:textAllCaps="false"
+            android:text="change photo"
+            app:elevation="@dimen/margin_8"
+            app:cornerRadius="@dimen/margin_8"
+            android:textColor="@color/secondary_color"
+            android:textSize="@dimen/textSize_10"
+            android:backgroundTint="@color/black_500"
+            app:layout_constraintEnd_toEndOf="@+id/celebrityImage"
+            app:layout_constraintStart_toStartOf="@+id/celebrityImage"
+            app:layout_constraintTop_toBottomOf="@+id/celebrityImage" />
+
+
+        <TextView
+            android:id="@+id/profile_fragment_email_tv"
+            style="@style/TextAppearance.Title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_16"
+            android:text="danny@gmail.com"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_fragment_change_photo" />
+
+
+        <View
+            android:id="@+id/horizontal_line"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="@color/secondary_color"
+            android:background="@color/secondary_color"
+            android:layout_marginStart="@dimen/margin_18"
+            android:layout_marginEnd="@dimen/margin_18"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_fragment_email_tv" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

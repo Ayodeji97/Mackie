@@ -3,22 +3,22 @@
 
     <item android:id="@+id/exploreFragment"
         android:icon="@drawable/ic_explore"
-        android:title="Explore"
+        android:title="@string/explore_str"
         />
 
     <item android:id="@+id/playlistFragment"
         android:icon="@drawable/ic_trending"
-        android:title="Playlist"
+        android:title="@string/playlist_str"
         />
 
     <item android:id="@+id/searchFragment"
         android:icon="@drawable/ic_search"
-        android:title="Search"
+        android:title="@string/search_str"
         />
 
-    <item android:id="@+id/libraryFragment"
-        android:icon="@drawable/ic_play_list"
-        android:title="Library"
+    <item android:id="@+id/profileFragment"
+        android:icon="@drawable/ic_person"
+        android:title="@string/profile_str"
         />
 
 </menu>

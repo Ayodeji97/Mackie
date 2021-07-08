@@ -1,5 +1,7 @@
 package com.example.android.danmack.ui.search
 
+import android.content.Intent
+import android.net.Uri
 import android.opengl.Visibility
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -14,6 +16,7 @@ import com.example.android.danmack.DebouncingQueryTextListener
 import com.example.android.danmack.databinding.FragmentSearchBinding
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
+import com.example.android.danmack.utils.playSongInBrowser
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import timber.log.Timber
@@ -26,9 +29,6 @@ class SearchFragment : Fragment() {
     private val viewModel : SearchViewModel by viewModels()
     private lateinit var searchAdapter: SearchAdapter
     private lateinit var searchResultAdapter: SearchResultAdapter
-//    private lateinit var exploreAdapter: ExploreAdapter
-
-
     private lateinit var userSearchInput : String
 
 
@@ -43,7 +43,7 @@ class SearchFragment : Fragment() {
 
 
         autoSearchSongs()
-        searchSongResult()
+
 
         ui.lifecycleOwner = this
         ui.searchViewModel = viewModel
@@ -52,13 +52,16 @@ class SearchFragment : Fragment() {
             Toast.makeText(requireContext(), "$it", Toast.LENGTH_SHORT).show()
             ui.searchView.setQuery(it.term, true)
 
-            userSearchInput = ui.searchView.query.toString()
 
+            userSearchInput = ui.searchView.query.toString()
 
         })
 
-        searchResultAdapter = SearchResultAdapter(SearchResultAdapter.SearchClickListener {
 
+        searchSongResult()
+
+        searchResultAdapter = SearchResultAdapter(SearchResultAdapter.SearchClickListener {
+            playSongInBrowser(it.track.url)
         })
 
         val verticalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
@@ -90,7 +93,6 @@ class SearchFragment : Fragment() {
     }
 
 
-
     private fun autoSearchSongs (){
         ui.searchView.setOnQueryTextListener(
             DebouncingQueryTextListener(
@@ -101,7 +103,7 @@ class SearchFragment : Fragment() {
                         Toast.makeText(requireContext(), "Empty", Toast.LENGTH_SHORT).show()
                     } else {
                         viewModel.autoCompleteSearchResult(it)
-//                        userSearchInput = it
+                        userSearchInput = it
                     }
                 }
             }
@@ -110,8 +112,6 @@ class SearchFragment : Fragment() {
 
     private fun searchSongResult () {
         ui.searchButton.setOnClickListener {
-            Toast.makeText(requireContext(), "$userSearchInput", Toast.LENGTH_LONG).show()
-            Timber.i("UserInput: $userSearchInput")
             viewModel.searchResult(userSearchInput)
         }
     }

@@ -8,13 +8,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentPlaylistBinding
 import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
 import com.example.android.danmack.ui.exploredetail.ExploreDetailViewModel
+import com.example.android.danmack.utils.setDisplayHomeAsUpEnabled
+import com.example.android.danmack.utils.setTitle
 import dagger.hilt.android.AndroidEntryPoint
+import timber.log.Timber
 
 @AndroidEntryPoint
 class PlaylistFragment : Fragment() {
@@ -31,28 +35,29 @@ class PlaylistFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        //return inflater.inflate(R.layout.fragment_playlist, container, false)
 
         ui = FragmentPlaylistBinding.inflate(inflater)
 
-      //  ui.playListViewModel = viewModel
+//        setDisplayHomeAsUpEnabled(false)
+//        setTitle("Playlist")
+
+      //ui.playListViewModel = viewModel
         ui.lifecycleOwner = this
+        ui.exploreDetailViewModel = viewModel
+
+        val horizontalManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
         exploreAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
 
-        })
-
-
-
-        viewModel.playlists.observe(viewLifecycleOwner, Observer {
-
-            //exploreAdapter.submitList(it as List<Track>)
 
         })
 
-        viewModel.idValue.observe(viewLifecycleOwner, Observer {
-            Log.i("INPLAYLIST", "$it")
+        ui.playlistRv.layoutManager = horizontalManager
+
+        ui.playlistRv.adapter = exploreAdapter
+
+        viewModel.playLists.observe(viewLifecycleOwner, Observer {
+            exploreAdapter.submitList(it)
         })
 
 

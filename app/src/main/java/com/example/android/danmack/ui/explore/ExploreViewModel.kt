@@ -40,10 +40,10 @@ init {
 
     private fun getRefreshTracksAndRecommendations () {
         viewModelScope.launch {
-//            songRepository.refreshTracks()
-//            songRepository.refreshRecommendations()
-            //songRepository.autoCompleteSearchSongs()
-           // songRepository.searchSongs()
+            songRepository.refreshTracks()
+            songRepository.refreshRecommendations()
+//            songRepository.autoCompleteSearchSongs()
+//            songRepository.searchSongs()
 
         }
     }

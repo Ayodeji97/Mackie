@@ -2,17 +2,19 @@
     <string name="app_name">DanMack</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="explore_str">Explore</string>
+<!--    <string name="explore_str">Explore</string>-->
     <string name="recommendation_str">Recommendation</string>
     <string name="favourite_str">Favourite</string>
-    <string name="playlist_str">Playlist</string>
+<!--    <string name="playlist_str">Playlist</string>-->
     <string name="share_link_str">Share Link</string>
     <string name="copy_link_str">Copy Link</string>
     <string name="detail_str">Song Details</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
+    <string name="login_str">Login</string>
+    <string name="cancel">Cancel</string>
 
-
+    <string name="choose_photo_title">Choose Profile Photo</string>
 
     <string name="content">With the idea of imparting programming
       knowledge, Mr. Sandeep Jain, an IIT Roorkee alumnus started a
@@ -29,4 +31,9 @@
       and landed jobs at tech giants. Our vision is to build a gigantic network of
       geeks and we are only a fraction of it yet.
   </string>
+    <string name="sign_up_str">Sign up</string>
+    <string name="search_str">Search</string>
+    <string name="playlist_str">Playlist</string>
+    <string name="explore_str">Explore</string>
+    <string name="profile_str">Profile</string>
 </resources>

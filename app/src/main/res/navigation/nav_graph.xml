@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/exploreFragment">
+    app:startDestination="@id/signUpFragment">
 
     <fragment
         android:id="@+id/exploreFragment"
@@ -41,4 +41,19 @@
 <!--            android:name="trackEntity"-->
 <!--            app:argType="com.example.android.danmack.local.localmodel.LocalTrackEntity" />-->
     </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.android.danmack.ui.auth.LoginFragment"
+        android:label="LoginFragment"
+        tools:layout="@layout/fragment_login"
+        />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.example.android.danmack.ui.auth.SignUpFragment"
+        android:label="SignUpFragment" />
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.android.danmack.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" />
 </navigation>

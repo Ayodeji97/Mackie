@@ -3,6 +3,7 @@ package com.example.android.danmack
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
@@ -26,6 +27,24 @@ class MainActivity : AppCompatActivity() {
         ui = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
         setupViews()
+
+        navController.addOnDestinationChangedListener { controller, destination, arguments ->
+            ui.bottomNavigationViewMain.isVisible = true
+
+            when (destination.id) {
+                R.id.exploreDetailFragment -> {
+                    ui.bottomNavigationViewMain.isVisible = false
+                }
+                R.id.loginFragment -> {
+                    ui.bottomNavigationViewMain.isVisible = false
+                }
+                R.id.signUpFragment -> {
+                    ui.bottomNavigationViewMain.isVisible = false
+                }
+            }
+        }
+
+
     }
 
 
@@ -38,6 +57,12 @@ class MainActivity : AppCompatActivity() {
             navController = navHostFragment.findNavController()
         }
 
+//        ui.bottomNavigationViewMain.setOnNavigationItemSelectedListener {
+//
+//        }
+
+
+
         ui.bottomNavigationViewMain.setupWithNavController(navController)
 //
 //        appBarConfiguration = AppBarConfiguration(
@@ -49,6 +74,16 @@ class MainActivity : AppCompatActivity() {
 //            )
 //        )
 
+    }
+
+
+
+    fun showBottomNavigation () {
+        ui.bottomNavigationViewMain.visibility = View.VISIBLE
+    }
+
+    fun hideBottomNavigation () {
+        ui.bottomNavigationViewMain.visibility = View.GONE
     }
 
 

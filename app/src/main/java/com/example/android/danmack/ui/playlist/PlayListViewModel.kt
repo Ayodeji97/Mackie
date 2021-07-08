@@ -12,7 +12,7 @@ import javax.inject.Inject
 class PlayListViewModel @Inject constructor
 (private val songRepository: SongRepository) : ViewModel() {
 
-    val playlists = songRepository.getAllPlayLists()
+  //  val playlists = songRepository.getAllPlayLists()
 
 
 

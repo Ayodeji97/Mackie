@@ -10,22 +10,41 @@
 <!--            name="playListViewModel"-->
 <!--            type="com.example.android.danmack.ui.exploredetail.ExploreDetailViewModel" />-->
 
+        <variable
+            name="exploreDetailViewModel"
+            type="com.example.android.danmack.ui.exploredetail.ExploreDetailViewModel" />
 
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.playlist.PlaylistFragment">
+    tools:context=".ui.playlist.PlaylistFragment"
+    android:background="@color/primary_color"
+    >
 
+
+    <TextView
+        android:id="@+id/fragment_explore_heading_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_24"
+        android:layout_marginTop="@dimen/textSize_32"
+        android:text="Playlist"
+        android:textAppearance="?textAppearanceHeadline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playlist_rv"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/margin_24"
+        android:layout_marginBottom="52dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/fragment_explore_heading_tv" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
