@@ -11,6 +11,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.constraintlayout.motion.widget.MotionLayout
 import androidx.core.app.ShareCompat
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
@@ -29,6 +30,7 @@ import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
 import com.example.android.danmack.utils.playSongInBrowser
+import com.google.android.material.appbar.AppBarLayout
 import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
@@ -52,7 +54,7 @@ class ExploreDetailFragment : Fragment() {
 
 
 
-
+        coordinateMotion()
 
         ui.lifecycleOwner = this
         ui.exploreDetailViewModel = viewModel
@@ -136,6 +138,19 @@ class ExploreDetailFragment : Fragment() {
 
         }
 
+    }
+
+
+    private fun coordinateMotion() {
+        val appBarLayout: AppBarLayout = ui.appbarLayout
+        val motionLayout: MotionLayout = ui.motionLayout
+
+        val listener = AppBarLayout.OnOffsetChangedListener { unused, verticalOffset ->
+            val seekPosition = -verticalOffset / appBarLayout.totalScrollRange.toFloat()
+            motionLayout.progress = seekPosition
+        }
+
+        appBarLayout.addOnOffsetChangedListener(listener)
     }
 
 

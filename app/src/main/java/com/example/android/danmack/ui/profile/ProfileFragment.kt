@@ -189,10 +189,11 @@ class ProfileFragment : Fragment() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == Activity.RESULT_OK) {
             val imageBitmap = data?.extras?.get("data") as Bitmap
-            Toast.makeText(requireContext(), "$imageBitmap", Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(), "Profile picture updated", Toast.LENGTH_SHORT).show()
             ui.celebrityImage.setImageBitmap(imageBitmap)
         } else if (requestCode == PICK_IMAGE && resultCode == Activity.RESULT_OK) {
             imageUri = data?.data!!
+            Toast.makeText(requireContext(), "Profile picture updated", Toast.LENGTH_SHORT).show()
             ui.celebrityImage.setImageURI(imageUri)
         }
 
