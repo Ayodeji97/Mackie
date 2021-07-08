@@ -8,12 +8,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.danmack.R
 import com.example.android.danmack.databinding.FragmentPlaylistBinding
 import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.ui.explore.ExploreAdapter
+import com.example.android.danmack.ui.explore.ExploreFragmentDirections
 import com.example.android.danmack.ui.exploredetail.ExploreDetailViewModel
 import com.example.android.danmack.utils.setDisplayHomeAsUpEnabled
 import com.example.android.danmack.utils.setTitle
@@ -27,8 +29,6 @@ class PlaylistFragment : Fragment() {
 
     private lateinit var exploreAdapter: ExploreAdapter
 
-   // private val viewModel : PlayListViewModel by viewModels()
-
     private val viewModel : ExploreDetailViewModel by viewModels()
 
     override fun onCreateView(
@@ -38,10 +38,6 @@ class PlaylistFragment : Fragment() {
 
         ui = FragmentPlaylistBinding.inflate(inflater)
 
-//        setDisplayHomeAsUpEnabled(false)
-//        setTitle("Playlist")
-
-      //ui.playListViewModel = viewModel
         ui.lifecycleOwner = this
         ui.exploreDetailViewModel = viewModel
 
@@ -49,6 +45,7 @@ class PlaylistFragment : Fragment() {
 
         exploreAdapter = ExploreAdapter(ExploreAdapter.SongClickListener {
 
+           viewModel.onPlayListSongClicked(it)
 
         })
 
@@ -57,7 +54,20 @@ class PlaylistFragment : Fragment() {
         ui.playlistRv.adapter = exploreAdapter
 
         viewModel.playLists.observe(viewLifecycleOwner, Observer {
-            exploreAdapter.submitList(it)
+            if(it.isNullOrEmpty()) {
+                ui.noDataTextView.visibility = View.VISIBLE
+            } else {
+                ui.noDataTextView.visibility = View.GONE
+                exploreAdapter.submitList(it)
+            }
+
+        })
+
+        viewModel.navigateToTopTrendDataDetail.observe(viewLifecycleOwner, Observer {track->
+            track?.let {
+                this.findNavController().navigate(PlaylistFragmentDirections.actionPlaylistFragmentToExploreDetailFragment(track))
+                viewModel.onNavigatedFinish()
+            }
         })
 
 

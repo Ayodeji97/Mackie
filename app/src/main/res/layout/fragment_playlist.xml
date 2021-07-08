@@ -35,6 +35,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
+    <TextView
+        android:id="@+id/noDataTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@drawable/box"
+        android:gravity="center"
+        android:text="No playlist added"
+        android:visibility="gone"
+        android:textAppearance="?textAppearanceHeadline5"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playlist_rv"
         android:layout_width="match_parent"

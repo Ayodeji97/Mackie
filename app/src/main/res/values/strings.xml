@@ -36,4 +36,7 @@
     <string name="playlist_str">Playlist</string>
     <string name="explore_str">Explore</string>
     <string name="profile_str">Profile</string>
+    <string name="cancel_str">Cancel</string>
+    <string name="add_playlist_str">Add Playlist</string>
+    <string name="play_str">Play</string>
 </resources>

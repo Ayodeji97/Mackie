@@ -78,16 +78,6 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    fun showBottomNavigation () {
-        ui.bottomNavigationViewMain.visibility = View.VISIBLE
-    }
-
-    fun hideBottomNavigation () {
-        ui.bottomNavigationViewMain.visibility = View.GONE
-    }
-
-
-
 //    override fun onWindowFocusChanged(hasFocus: Boolean) {
 //        super.onWindowFocusChanged(hasFocus)
 //

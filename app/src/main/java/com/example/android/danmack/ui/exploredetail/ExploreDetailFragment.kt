@@ -2,6 +2,7 @@ package com.example.android.danmack.ui.exploredetail
 
 import android.content.*
 import android.content.Context.CLIPBOARD_SERVICE
+import android.graphics.drawable.Drawable
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,9 +12,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.app.ShareCompat
+import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.content.res.ResourcesCompat
+import androidx.core.graphics.drawable.DrawableCompat
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
@@ -47,6 +52,8 @@ class ExploreDetailFragment : Fragment() {
 
 
 
+
+
         ui.lifecycleOwner = this
         ui.exploreDetailViewModel = viewModel
 
@@ -57,6 +64,10 @@ class ExploreDetailFragment : Fragment() {
         ui.trackSelected = trackSelected
 
         val url = trackSelected.url
+
+        ui.bottomSheetLayoutCancelButton.setOnClickListener {
+            findNavController().navigate(R.id.exploreFragment)
+        }
 
         ui.copyImg.setOnClickListener {
             Clip.clipReferral(url, requireActivity())
@@ -73,10 +84,20 @@ class ExploreDetailFragment : Fragment() {
 
 
 
+
+
        viewModel.getTrackSelected(trackSelected.key)
 
+        val playListDrawable :  Drawable? = ResourcesCompat.getDrawable(resources, R.drawable.playlist, null)
+
+
+
         ui.bottomSheetLayoutPlaylistBtn.setOnClickListener {
-            Toast.makeText(requireContext(), "Cliccked", Toast.LENGTH_SHORT).show()
+
+            if (playListDrawable != null) {
+                DrawableCompat.setTint(playListDrawable, ContextCompat.getColor(requireContext(), R.color.accent_color))
+            }
+            Toast.makeText(requireContext(), "Play list added", Toast.LENGTH_SHORT).show()
             viewModel.idValue.observe(viewLifecycleOwner, Observer {
                 viewModel.onPlayListClicked(it)
             })

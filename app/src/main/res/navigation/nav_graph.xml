@@ -23,7 +23,11 @@
         android:id="@+id/playlistFragment"
         android:name="com.example.android.danmack.ui.playlist.PlaylistFragment"
         android:label="fragment_playlist"
-        tools:layout="@layout/fragment_playlist" />
+        tools:layout="@layout/fragment_playlist" >
+        <action
+            android:id="@+id/action_playlistFragment_to_exploreDetailFragment"
+            app:destination="@id/exploreDetailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/libraryFragment"
         android:name="com.example.android.danmack.ui.library.LibraryFragment"

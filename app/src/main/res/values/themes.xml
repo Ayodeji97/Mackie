@@ -25,6 +25,7 @@
         <item name="textAppearanceHeadline5">@style/CustomiseHeadline5</item>
         <item name="textAppearanceBody1">@style/CustomiseBody1</item>
         <item name="textAppearanceBody2">@style/CustomiseBody2</item>
+
     </style>
 
     <style name="CustomiseHeadline6" parent="TextAppearance.MaterialComponents.Headline6">
@@ -51,6 +52,12 @@
         <item name="fontFamily">@font/montserrat</item>
         <item name="android:textSize">@dimen/textSize_10</item>
     </style>
+
+    <style name="CustomiseBody3" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/secondary_color</item>
+        <item name="fontFamily">@font/montserrat</item>
+        <item name="android:textSize">@dimen/textSize_10</item>
+    </style>
     
     <style name="BottomSheetDialogTheme" parent="Theme.Design.BottomSheetDialog">
         <item name="bottomSheetStyle">@style/BottomSheetDialogTheme</item>
@@ -64,6 +71,14 @@
         <item name="android:textSize">18sp</item>
             <item name="fontFamily">@font/montserrat</item>
         <item name="android:textColor">@color/secondary_color</item>
+    </style>
+
+
+    <style name="CustomToolbarTheme" parent="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <!-- HERE ARE THE CHANGES - Change color of different texts -->
+        <item name="android:textColorPrimary">@color/secondary_color</item>
+        <item name="colorControlNormal">@color/primary_color</item>
     </style>
 
 <!--    <style name="TextAppearance.Subtitle" parent="TextAppearance.Title" >-->

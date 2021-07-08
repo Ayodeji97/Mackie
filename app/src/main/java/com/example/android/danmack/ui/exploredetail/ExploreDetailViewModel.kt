@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.lifecycle.*
 import com.example.android.danmack.local.localmodel.LocalTrackEntity
 import com.example.android.danmack.model.searchmodel.HitsData
+import com.example.android.danmack.model.songmodel.Track
 import com.example.android.danmack.repository.SongRepository
 import com.example.android.danmack.ui.explore.ExploreViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,6 +33,12 @@ class ExploreDetailViewModel @Inject constructor
         get() = _idValue
 
 
+    private val _navigateToTopTrendDataDetail = MutableLiveData<Track?>()
+    val navigateToTopTrendDataDetail : LiveData<Track?>
+        get() = _navigateToTopTrendDataDetail
+
+
+
 
 
 
@@ -50,6 +57,15 @@ class ExploreDetailViewModel @Inject constructor
            _idValue.value =  songRepository.getTrackSelectedById(id)!!
         }
 
+    }
+
+
+    fun onPlayListSongClicked (track: Track) {
+        _navigateToTopTrendDataDetail.value = track
+    }
+
+    fun onNavigatedFinish() {
+        _navigateToTopTrendDataDetail.value = null
     }
 
 }
