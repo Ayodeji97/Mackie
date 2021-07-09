@@ -7,7 +7,9 @@ import android.util.Log
 import android.widget.Toast
 import dagger.hilt.android.HiltAndroidApp
 import timber.log.Timber
-
+/**
+ * Application class
+ * */
 @HiltAndroidApp
 class MyApplication : Application() {
     override fun onCreate() {

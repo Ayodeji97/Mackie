@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
         >
 
-
+        <!--  Constraint layout for efficient rendering on views on screen -->
         <androidx.constraintlayout.motion.widget.MotionLayout
             android:id="@+id/motion_layout"
             android:layout_width="match_parent"

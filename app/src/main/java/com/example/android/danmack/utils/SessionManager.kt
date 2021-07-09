@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.SharedPreferences
 import com.example.android.danmack.utils.Constants.SHARED_PREFS
 
+/**
+ * Shared Pref
+ * */
 object SessionManager {
 
     //Load details From Shared Preferences

@@ -6,7 +6,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.example.android.danmack.model.songmodel.ImagesX
 import kotlinx.android.parcel.Parcelize
-
+/**
+ * Entity for song
+ * */
 @Parcelize
 @Entity(tableName = "song_table")
 data class LocalTrackEntity (

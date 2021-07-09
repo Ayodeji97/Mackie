@@ -16,11 +16,12 @@
 
 
 
-
+<!--Nested scroll view -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
+        <!--  Constraint layout for efficient rendering on views on screen -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"

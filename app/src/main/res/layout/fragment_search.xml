@@ -10,6 +10,7 @@
             name="searchViewModel"
             type="com.example.android.danmack.ui.search.SearchViewModel" />
     </data>
+    <!-- Constraint layout to prefer to avoid nested view for app optimisation -->
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"

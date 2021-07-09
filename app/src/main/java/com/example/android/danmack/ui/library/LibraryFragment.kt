@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.example.android.danmack.R
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Library fragment
+ * */
 @AndroidEntryPoint
 class LibraryFragment : Fragment() {
 

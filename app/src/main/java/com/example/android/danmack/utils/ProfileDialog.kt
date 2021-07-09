@@ -28,7 +28,10 @@ import com.example.android.danmack.R
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 
-
+/**
+ * Dialog fragment
+ *
+ * */
 class ProfileDialog : DialogFragment() {
 
     companion object {

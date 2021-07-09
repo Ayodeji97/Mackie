@@ -5,7 +5,9 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.android.danmack.local.localmodel.LocalTrackEntity
 
-//import com.example.android.danmack.local.localmodel.SongDataEntity
+/**
+ * Database for local song
+ * */
 
 @Database(entities = [LocalTrackEntity::class], version = 1, exportSchema = false)
 @TypeConverters(ListConverter::class)

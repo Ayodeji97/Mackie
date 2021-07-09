@@ -35,6 +35,9 @@ import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+/**
+ * Explore detail screen
+ * */
 @AndroidEntryPoint
 class ExploreDetailFragment : Fragment() {
 

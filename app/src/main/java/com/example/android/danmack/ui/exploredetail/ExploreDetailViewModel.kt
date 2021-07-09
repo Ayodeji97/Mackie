@@ -14,6 +14,9 @@ import kotlinx.coroutines.withContext
 import java.lang.Exception
 import javax.inject.Inject
 
+/**
+ * Explore detail view Model
+ * */
 @HiltViewModel
 class ExploreDetailViewModel @Inject constructor
 (private val songRepository: SongRepository) : ViewModel() {

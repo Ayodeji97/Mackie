@@ -22,6 +22,9 @@ import com.example.android.danmack.utils.setTitle
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
 
+/**
+ * Platlist fragment
+ * */
 @AndroidEntryPoint
 class PlaylistFragment : Fragment() {
 

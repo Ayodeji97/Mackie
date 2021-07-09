@@ -11,7 +11,9 @@ import com.bumptech.glide.request.RequestOptions
 import com.example.android.danmack.databinding.TrendingListItemBinding
 import com.example.android.danmack.model.songmodel.Track
 
-
+/**
+ * Adapter class for recycler view item
+ * */
 class ExploreAdapter (val clickListener : SongClickListener) : ListAdapter<Track, ExploreAdapter.ExploreViewHolder> (SongDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ExploreViewHolder = ExploreViewHolder.from(parent)

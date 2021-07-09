@@ -12,6 +12,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.android.danmack.databinding.FragmentExploreBinding
 import dagger.hilt.android.AndroidEntryPoint
 
+/**
+ * Explore fragment
+ * */
 @AndroidEntryPoint
 class ExploreFragment : Fragment() {
 
@@ -69,10 +72,6 @@ class ExploreFragment : Fragment() {
                 viewModel.onNavigatedFinish()
             }
         })
-
-
-
-
 
         return ui.root
     }

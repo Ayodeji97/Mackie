@@ -3,7 +3,9 @@ package com.example.android.danmack.local
 import androidx.room.TypeConverter
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
-
+/**
+ * This is the list converter for strings.
+ * */
 class ListConverter {
     @TypeConverter
     fun fromString(value: String?): List<String>? {

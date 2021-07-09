@@ -9,6 +9,9 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+/**
+ * Explore viewModel
+ * */
 @HiltViewModel
 class ExploreViewModel @Inject constructor
     (private val songRepository: SongRepository) : ViewModel() {

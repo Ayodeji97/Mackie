@@ -3,6 +3,9 @@ import androidx.lifecycle.LiveData
 import androidx.room.*
 import com.example.android.danmack.local.localmodel.LocalTrackEntity
 
+/**
+ * Data access object
+ * */
 @Dao
 interface SongDao {
 

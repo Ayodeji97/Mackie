@@ -11,7 +11,7 @@
             type="com.example.android.danmack.model.songmodel.Track" />
     </data>
 
-
+    <!-- Constraint layout to prefer to avoid nested view for app optimisation -->
 <androidx.constraintlayout.widget.ConstraintLayout
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
