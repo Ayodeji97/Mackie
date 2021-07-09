@@ -53,8 +53,8 @@
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recommendation_recycler_view"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
+            android:layout_width="@dimen/margin_0"
+            android:layout_height="@dimen/margin_0"
             android:layout_marginTop="@dimen/margin_20"
             tools:listitem="@layout/trending_list_item"
             app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -68,7 +68,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_24"
-            android:text="Top Trending"
+            android:text="@string/top_trending_str"
             android:layout_marginTop="@dimen/margin_20"
             android:textAppearance="?textAppearanceHeadline6"
             app:layout_constraintStart_toStartOf="parent"
@@ -83,7 +83,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginBottom="55dp"
+            android:layout_marginBottom="@dimen/margin_55"
             app:layout_constraintTop_toBottomOf="@+id/fragment_container_view_trending_heading_tv" />
 
         <androidx.constraintlayout.widget.Guideline
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            app:layout_constraintGuide_begin="372dp" />
+            app:layout_constraintGuide_begin="@dimen/margin_372" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -11,7 +11,7 @@
     <string name="detail_str">Song Details</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 
-    <string name="login_str">Login</string>
+<!--    <string name="login_str">Login</string>-->
     <string name="cancel">Cancel</string>
 
     <string name="choose_photo_title">Choose Profile Photo</string>
@@ -39,4 +39,30 @@
     <string name="cancel_str">Cancel</string>
     <string name="add_playlist_str">Add Playlist</string>
     <string name="play_str">Play</string>
+    <string name="actor_image_str">Actor Image</string>
+    <string name="favourite_button_str">Favourite button</string>
+    <string name="play_list_button_str">Play list button</string>
+    <string name="user_icon_str">User Icon</string>
+    <string name="link_image_str">Link Image</string>
+    <string name="share_icon_str">Share Icon</string>
+    <string name="artist_cover_image_str">Artist cover image</string>
+
+    <string name="copy_link_image_str">Copy link Image</string>
+
+    <string name="top_trending_str">Top Trending</string>
+    <string name="song_details_str">Song Details</string>
+    <string name="library_str">Library</string>
+    <string name="this_is_great_str">This is great</string>
+    <string name="login_str">Login</string>
+    <string name="email_str">email</string>
+    <string name="password_str">password</string>
+    <string name="do_not_have_account_yet_sign_up_str">Do not have account yet? Sign up</string>
+    <string name="no_playlist_added_str">No playlist added</string>
+    <string name="change_photo_str">change photo</string>
+    <string name="danny_gmail_com_str">danny@gmail.com</string>
+
+
+
+    <string name="already_have_an_account_login_str">Already have an account? login</string>
+    <string name="lagbaja_str">Lagbaja</string>
 </resources>

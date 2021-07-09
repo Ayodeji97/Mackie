@@ -11,14 +11,14 @@
 
     <ImageView
         android:id="@+id/artist_img"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/margin_100"
+        android:layout_height="@dimen/margin_100"
         android:src="@drawable/lagbaja_img"
         android:layout_marginTop="@dimen/margin_18"
         android:layout_marginStart="@dimen/margin_18"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        android:contentDescription="@string/actor_image_str" />
 
     <TextView
         android:id="@+id/bottom_sheet_layout_title"
@@ -56,14 +56,14 @@
 
     <ImageView
         android:id="@+id/bottom_sheet_layout_favourite_btn"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="@dimen/margin_30"
+        android:layout_height="@dimen/margin_30"
         android:src="@drawable/heart"
         app:layout_constraintTop_toBottomOf="@+id/first_view"
         app:layout_constraintStart_toStartOf="@+id/artist_img"
         android:layout_marginStart="@dimen/margin_18"
         android:layout_marginTop="@dimen/margin_16"
-        />
+        android:contentDescription="@string/favourite_button_str" />
 
     <TextView
         android:id="@+id/bottom_sheet_layout_favourite_tv"
@@ -80,13 +80,14 @@
 
     <ImageView
         android:id="@+id/bottom_sheet_layout_playlist_btn"
-        android:layout_width="35dp"
-        android:layout_height="30dp"
-        android:layout_marginStart="68dp"
+        android:layout_width="@dimen/margin_35"
+        android:layout_height="@dimen/margin_30"
+        android:layout_marginStart="@dimen/margin_68"
         android:layout_marginTop="@dimen/margin_16"
         android:src="@drawable/playlist"
         app:layout_constraintStart_toEndOf="@+id/bottom_sheet_layout_favourite_btn"
-        app:layout_constraintTop_toBottomOf="@+id/first_view" />
+        app:layout_constraintTop_toBottomOf="@+id/first_view"
+        android:contentDescription="@string/play_list_button_str" />
 
     <TextView
         android:id="@+id/bottom_sheet_layout_playlist_tv"
@@ -104,8 +105,8 @@
         android:id="@+id/bottom_sheet_layout_play_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:cornerRadius="10dp"
-        android:text="Play"
+        app:cornerRadius="@dimen/margin_10"
+        android:text="@string/play_str"
         android:layout_marginTop="@dimen/margin_16"
         android:textAppearance="@style/CustomiseBody2"
         android:drawableStart="@drawable/ic_play_icon"
@@ -118,7 +119,7 @@
     <View
         android:id="@+id/second_view"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/margin_0.5"
         android:background="@color/secondary_color"
         android:layout_marginTop="@dimen/margin_16"
         app:layout_constraintEnd_toEndOf="parent"
@@ -135,7 +136,8 @@
         android:layout_marginStart="@dimen/margin_20"
         android:layout_marginTop="@dimen/margin_20"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/second_view" />
+        app:layout_constraintTop_toBottomOf="@+id/second_view"
+        android:contentDescription="@string/user_icon_str" />
 
 
     <TextView
@@ -153,7 +155,7 @@
     <View
         android:id="@+id/third_view"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/margin_0.5"
         android:background="@color/secondary_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -171,7 +173,8 @@
         android:layout_marginStart="@dimen/margin_20"
         android:layout_marginTop="@dimen/margin_20"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/third_view" />
+        app:layout_constraintTop_toBottomOf="@+id/third_view"
+        android:contentDescription="@string/link_image_str" />
 
 
     <TextView
@@ -188,7 +191,7 @@
     <View
         android:id="@+id/fourth_view"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
+        android:layout_height="@dimen/margin_0.5"
         android:background="@color/secondary_color"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -206,7 +209,8 @@
         android:layout_marginStart="@dimen/margin_20"
         android:layout_marginTop="@dimen/margin_20"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fourth_view" />
+        app:layout_constraintTop_toBottomOf="@+id/fourth_view"
+        android:contentDescription="@string/share_icon_str" />
 
 
     <TextView
@@ -223,10 +227,13 @@
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/bottom_sheet_layout_cancel_button"
-        android:layout_width="0dp"
+        android:layout_width="@dimen/margin_0"
         android:layout_height="wrap_content"
         app:cornerRadius="@dimen/margin_8"
-        android:text="Cancel"
+        android:text="@string/cancel_str"
+        android:textSize="@dimen/textSize_16"
+        android:paddingTop="@dimen/padding_20"
+        android:paddingBottom="@dimen/padding_20"
         android:textAppearance="@style/CustomiseBody2"
         android:layout_marginTop="@dimen/margin_24"
         android:layout_marginStart="@dimen/margin_24"

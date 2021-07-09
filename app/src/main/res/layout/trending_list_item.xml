@@ -38,11 +38,12 @@
 
     <ImageView
         android:id="@+id/trending_recycler_view_img"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/margin_150"
+        android:layout_height="@dimen/margin_150"
         android:layout_marginStart="@dimen/margin_18"
         android:layout_marginTop="@dimen/margin_18"
         android:layout_marginBottom="@dimen/margin_18"
+        android:contentDescription="@string/actor_image_str"
         android:src="@drawable/lagbaja_img"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -78,10 +79,11 @@
 
     <ImageView
         android:id="@+id/bottom_sheet_dialog_btn"
-        android:layout_width="15dp"
-        android:layout_height="15dp"
+        android:layout_width="@dimen/margin_15"
+        android:layout_height="@dimen/margin_15"
         android:src="@drawable/dots_second"
         android:layout_marginEnd="@dimen/margin_20"
+        android:contentDescription="@string/actor_image_str"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"

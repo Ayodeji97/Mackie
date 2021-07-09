@@ -19,8 +19,8 @@
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/card_view_recommendation"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
+        android:layout_width="@dimen/margin_150"
+        android:layout_height="@dimen/margin_150"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:strokeWidth="1dp"
@@ -34,9 +34,10 @@
 
             <ImageView
                 android:id="@+id/recommendation_list_item_img"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
+                android:layout_width="@dimen/margin_150"
+                android:layout_height="@dimen/margin_150"
                 android:src="@drawable/lagbaja_img"
+                android:contentDescription="@string/actor_image_str"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,7 @@
         android:id="@+id/recommendation_item_list_author_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Lagbaja"
+        android:text="@string/lagbaja_str"
         android:textColor="@color/secondary_color"
         android:textAppearance="?textAppearanceBody2"
         app:layout_constraintTop_toBottomOf="@+id/card_view_recommendation"

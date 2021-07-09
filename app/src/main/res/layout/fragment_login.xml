@@ -20,8 +20,8 @@
 
             <View
                 android:id="@+id/view"
-                android:layout_width="40dp"
-                android:layout_height="1dp"
+                android:layout_width="@dimen/margin_40"
+                android:layout_height="@dimen/margin_1"
                 android:layout_marginStart="@dimen/margin_24"
                 android:layout_marginTop="104dp"
                 android:background="@color/white"
@@ -32,7 +32,7 @@
                 android:id="@+id/fragment_login_heading_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="This is great"
+                android:text="@string/this_is_great_str"
                 android:textAppearance="?textAppearanceHeadline6"
                 android:layout_marginStart="@dimen/margin_16"
                 android:textColor="@color/white"
@@ -44,8 +44,8 @@
                 android:id="@+id/fragment_login_"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="Login"
+                android:layout_marginTop="@dimen/margin_20"
+                android:text="@string/login_str"
                 android:textAppearance="?textAppearanceHeadline5"
                 android:textColor="@color/white"
                 android:textStyle="bold"
@@ -54,9 +54,9 @@
 
             <View
                 android:id="@+id/view_long"
-                android:layout_width="120dp"
-                android:layout_height="3dp"
-                android:layout_marginTop="24dp"
+                android:layout_width="@dimen/margin_120"
+                android:layout_height="@dimen/margin_3"
+                android:layout_marginTop="@dimen/margin_24"
                 android:background="@color/white"
                 app:layout_constraintStart_toEndOf="@+id/view"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_login_" />
@@ -67,7 +67,7 @@
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="email"
+                android:hint="@string/email_str"
                 app:boxStrokeColor="@color/primary_color"
                 android:layout_marginTop="@dimen/margin_24"
                 android:layout_marginEnd="@dimen/margin_24"
@@ -82,7 +82,7 @@
                     android:layout_height="match_parent"
                     android:inputType="textEmailAddress"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/textSize_12" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -90,9 +90,9 @@
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_login_password_tl"
                 style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/margin_0"
                 android:layout_height="wrap_content"
-                android:hint="password"
+                android:hint="@string/password_str"
                 android:layout_marginTop="@dimen/margin_24"
                 android:layout_marginEnd="@dimen/margin_24"
                 app:boxStrokeColor="@color/primary_color"
@@ -108,21 +108,21 @@
                     android:filterTouchesWhenObscured="true"
                     android:inputType="numberPassword"
                     android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="@dimen/textSize_12" />
 
             </com.google.android.material.textfield.TextInputLayout>
 
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_btn"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/margin_0"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="35dp"
-                android:layout_marginEnd="35dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginStart="@dimen/margin_35"
+                android:layout_marginEnd="@dimen/margin_35"
+                android:layout_marginBottom="@dimen/margin_30"
                 android:backgroundTint="@color/black_500"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
+                android:paddingTop="@dimen/margin_20"
+                android:paddingBottom="@dimen/margin_20"
                 android:text="@string/login_str"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
@@ -139,7 +139,7 @@
                 android:id="@+id/do_not_have_account_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Do not have account yet? Sign up"
+                android:text="@string/do_not_have_account_yet_sign_up_str"
                 android:layout_marginTop="@dimen/margin_16"
                 android:textAppearance="?textAppearanceHeadline6"
                 app:layout_constraintEnd_toEndOf="@+id/login_btn"

@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/margin_24"
         android:layout_marginTop="@dimen/textSize_32"
-        android:text="Playlist"
+        android:text="@string/playlist_str"
         android:textAppearance="?textAppearanceHeadline5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -41,24 +41,24 @@
         android:id="@+id/noDataTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@drawable/box"
         android:gravity="center"
-        android:text="No playlist added"
+        android:text="@string/no_playlist_added_str"
         android:visibility="gone"
         android:textAppearance="?textAppearanceHeadline5"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:drawableTopCompat="@drawable/box" />
 
 
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/playlist_rv"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/margin_0"
         android:layout_marginTop="@dimen/margin_24"
-        android:layout_marginBottom="52dp"
+        android:layout_marginBottom="@dimen/margin_52"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

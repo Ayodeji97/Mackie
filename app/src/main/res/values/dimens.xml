@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 <!--    Margin -->
+    <dimen name="margin_0">0dp</dimen>
+    <dimen name="margin_0.5">0.5dp</dimen>
+    <dimen name="margin_1">1dp</dimen>
+    <dimen name="margin_3">3dp</dimen>
+    <dimen name="margin_4">4dp</dimen>
     <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
     <dimen name="margin_16">16dp</dimen>
     <dimen name="margin_18">18dp</dimen>
     <dimen name="margin_20">20dp</dimen>
     <dimen name="margin_24">24dp</dimen>
+    <dimen name="margin_28">28dp</dimen>
+    <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_35">35dp</dimen>
+    <dimen name="margin_40">45dp</dimen>
+    <dimen name="margin_52">52dp</dimen>
+    <dimen name="margin_55">55dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_68">68dp</dimen>
+    <dimen name="margin_80">80dp</dimen>
+    <dimen name="margin_100">100dp</dimen>
+    <dimen name="margin_120">120dp</dimen>
+    <dimen name="margin_150">150dp</dimen>
+    <dimen name="margin_250">250dp</dimen>
+    <dimen name="margin_372">372dp</dimen>
 
 <!--    Padding -->
     <dimen name="padding_16">16dp</dimen>
@@ -16,6 +37,7 @@
 
 <!--    Text sizing-->
     <dimen name="textSize_10">10sp</dimen>
+    <dimen name="textSize_12">12sp</dimen>
     <dimen name="textSize_14">14sp</dimen>
     <dimen name="textSize_16">16sp</dimen>
     <dimen name="textSize_18">18sp</dimen>

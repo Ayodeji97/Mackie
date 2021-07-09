@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.bumptech.glide.request.RequestOptions
+import com.example.android.danmack.R
 import com.example.android.danmack.databinding.SearchListItemBinding
 import com.example.android.danmack.databinding.SearchResultListItemBinding
 import com.example.android.danmack.model.searchmodel.SearchTrackData
@@ -30,6 +31,8 @@ class SearchResultAdapter (val clickListener : SearchClickListener) : ListAdapte
                     .load(item.track.images.coverart)
                     .apply(RequestOptions.centerCropTransform())
                     .transition(DrawableTransitionOptions.withCrossFade())
+                    .placeholder(R.drawable.loading_animation)
+                    .error(R.drawable.ic_broken_image)
                     .into(ui.searchResultImg)
 
             ui.clickListener = clickListener

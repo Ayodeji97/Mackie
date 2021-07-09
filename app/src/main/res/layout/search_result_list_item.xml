@@ -26,9 +26,10 @@
 
     <ImageView
         android:id="@+id/search_result_img"
-        android:layout_width="60dp"
-        android:layout_height="60dp"
+        android:layout_width="@dimen/margin_60"
+        android:layout_height="@dimen/margin_60"
         android:src="@drawable/lagbaja_img"
+        android:contentDescription="@string/actor_image_str"
         android:layout_marginStart="@dimen/margin_16"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
