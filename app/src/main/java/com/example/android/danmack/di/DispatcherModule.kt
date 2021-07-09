@@ -8,7 +8,9 @@ import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import javax.inject.Qualifier
 
-
+/**
+ * Module for dispatchers
+ * */
 @Module
 @InstallIn(SingletonComponent::class)
 object DispatcherModule {

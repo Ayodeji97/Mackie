@@ -26,7 +26,9 @@ import retrofit2.create
 import java.util.concurrent.TimeUnit
 import javax.inject.Qualifier
 import javax.inject.Singleton
-
+/**
+ * Module for network
+ * */
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
