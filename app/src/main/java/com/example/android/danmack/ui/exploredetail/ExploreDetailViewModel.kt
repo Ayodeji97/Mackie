@@ -46,7 +46,9 @@ class ExploreDetailViewModel @Inject constructor
 
 
 
-
+/**
+ * Add play list on click on playlist button
+ * */
     fun onPlayListClicked (localTrackEntity: LocalTrackEntity) {
         val currentPlayList = localTrackEntity.isPlayListSelected
         val updatedPlayList = localTrackEntity.copy(isPlayListSelected = !currentPlayList)
