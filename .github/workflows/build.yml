@@ -1,42 +1,31 @@
-name: Build
-on: [pull_request, push]
+name: Android Build
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout the code
-        uses: actions/checkout@v2
-      - name: Build the app
-        run: ./gradlew build
+      - uses: actions/checkout@v2
 
-
-
-
-
-  test_job:
-    name: Test
-    runs-on: ubuntu-18.04
-    continue-on-error: true
-    steps:
-
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Restore Cache
-        uses: actions/cache@v2
+      - name: Set Up JDK
+        uses: actions/setup-java@v1
         with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-      - name: Run Debug Tests
-        run: ./gradlew testDebugUnitTest --continue
+          java-version: 11
 
-      - name: Upload Test Reports
-        if: ${{ always() }}
-        uses: actions/upload-artifact@v2
-        with:
-          name: test-reports
-          path: '**/build/reports/tests/'
+      - name: Run Spotless Apply
+        run: ./gradlew spotlessApply
+
+      - name: Run Spotless Check
+        run: ./gradlew spotlessCheck
+
+      - name: Run Tests
+        run: ./gradlew testDebugUnitTest
+
+      - name: Build Project
+        run: ./gradlew assembleDebug
