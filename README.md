@@ -81,8 +81,11 @@ _Instruction to run the project_
 # Author
 **Daniel Ayodeji**
 
+# Code Of Coduct
+Kindly take some time to go through the app code of coduct to help in healthy contribution to this project - see : [Code of Conduct](CODE_OF_CONDUCT.md)
+
 # License
-This project is licensed under the Apache License 2.0 - see : https://www.apache.org/licenses/LICENSE-2.0.txt
+This project is licensed under the Apache License 2.0 - see : [licence](LICENCE)
 
 
 
