@@ -85,7 +85,7 @@ _Instruction to run the project_
 Kindly take some time to go through the app code of coduct to help in healthy contribution to this project - see : [Code of Conduct](CODE_OF_CONDUCT.md)
 
 # License
-This project is licensed under the Apache License 2.0 - see : [licence](LICENCE)
+This project is licensed under the Apache License 2.0 - see : [licence](LICENSE)
 
 
 
