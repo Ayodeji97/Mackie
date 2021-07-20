@@ -12,7 +12,7 @@ import retrofit2.HttpException
 
 @HiltWorker
 class RefreshDataWork @AssistedInject constructor(
-    @Assisted @ApplicationContext appContext : Context,
+    @Assisted appContext : Context,
     @Assisted workerParams : WorkerParameters,
     private val songRepository: SongRepository
 ) : CoroutineWorker(appContext, workerParams) {
@@ -34,6 +34,5 @@ class RefreshDataWork @AssistedInject constructor(
     companion object {
         const val WORK_NAME = "RefreshDataWorker"
     }
-
 
 }
