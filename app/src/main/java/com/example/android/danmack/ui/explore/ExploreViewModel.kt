@@ -37,7 +37,7 @@ class ExploreViewModel @Inject constructor
 
 
 init {
-    getRefreshTracksAndRecommendations()
+   // getRefreshTracksAndRecommendations()
 }
 
 

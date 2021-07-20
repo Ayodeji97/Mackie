@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.android.danmack" >
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.example.android.danmack">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-feature android:name="android.hardware.camera"
@@ -35,6 +36,11 @@ Android 10 or higher. -->
         <meta-data
             android:name="keyValue"
             android:value="${KEY}"/>
+
+<!--        <provider-->
+<!--            android:name="androidx.work.impl.WorkManagerInitializer"-->
+<!--            android:authorities="${applicationId}.workmanager-init"-->
+<!--            tools:node="remove" />-->
     </application>
 
 </manifest>
