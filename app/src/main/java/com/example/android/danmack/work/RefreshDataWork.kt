@@ -10,6 +10,9 @@ import dagger.assisted.AssistedInject
 import dagger.hilt.android.qualifiers.ApplicationContext
 import retrofit2.HttpException
 
+/**
+ * Work class for periodic sync of data between remote data source and local data source
+ * */
 @HiltWorker
 class RefreshDataWork @AssistedInject constructor(
     @Assisted appContext : Context,
