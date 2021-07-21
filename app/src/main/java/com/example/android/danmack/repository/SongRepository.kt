@@ -29,7 +29,9 @@ import kotlinx.coroutines.withContext
 import timber.log.Timber
 import javax.inject.Inject
 import javax.inject.Singleton
-
+/**
+ * Repository for all songs
+ * */
 @Singleton
 class SongRepository @Inject constructor(
     private val songDatabase: SongDatabase,
@@ -88,8 +90,6 @@ class SongRepository @Inject constructor(
         songDatabase.songDao().updatePlayList(localTrackEntity)
     }
 
-    //fun getAllPlayLists () : LiveData<List<LocalTrackEntity>> = songDatabase.songDao().getAllPlayListTracks()
-
 
     /**
      * refresh track song list
@@ -142,8 +142,5 @@ class SongRepository @Inject constructor(
     suspend fun searchSongs(query: String) : SearchData {
             return  songApiService.searchSongs(key, API_HOST, query, locale, offset, limit)
     }
-
-
-
 
 }
