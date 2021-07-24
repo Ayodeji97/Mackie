@@ -5,7 +5,7 @@ Mackie App is a music application that display a list of trending artist song an
 _This is a custom application built and reviewed by Udacity Android Nanodegree Programme expert._
 
 Mackie Application is under development.
-_Note: Mackie Application is built only for learning and sharing lastest android development_
+_Note: Mackie Application is built only for learning and sharing lastest android development._
 
 ## Feature
 * Kotlin Coroutine for async operations
